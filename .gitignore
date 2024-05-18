@@ -120,6 +120,7 @@ venv.bak/
 *.sublime-project 
 
 ignore.html
+DONTREADME.MD
 
 # sftp configuration file 
 sftp-config.json 
