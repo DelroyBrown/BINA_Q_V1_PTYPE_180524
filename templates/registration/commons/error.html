@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Registration Error</h1>
+<p>{{ message }}</p>
+<a href="{% url 'BINA_Q_healthcare_workers:register' %}">Go back to registration</a>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Welcome to your Dashboard, {{ user.first_name }}!</h1>
+<h2>User Information</h2>
+<ul>
+    <li>BINA-Q ID: {{ user.bina_q_id }}</li>
+    <li>Email: {{ user.email }}</li>
+    <li>First Name: {{ user.first_name }}</li>
+    <li>Last Name: {{ user.last_name }}</li>
+</ul>
+
+{% if healthcare_worker %}
+<h2>Healthcare Worker Information</h2>
+<ul>
+    <li>Identifier: {{ healthcare_worker.identifier }}</li>
+    <li>License Number: {{ healthcare_worker.license_number }}</li>
+    <li>Specialization: {{ healthcare_worker.specialization }}</li>
+    <li>Organisation Affiliation: {{ healthcare_worker.organisation_affiliation }}</li>
+    <li>ODS Code: {{ healthcare_worker.ods_code }}</li>
+</ul>
+
+{% if organisation_details %}
+<h2>Organisation Details</h2>
+<ul>
+    <li>Organisation Name: {{ organisation_details.organisation_name }}</li>
+    <li>Address: {{ organisation_details.address }}</li>
+    <li>Contact Number: {{ organisation_details.contact_number }}</li>
+</ul>
+{% endif %}
+{% endif %}
+<a href="{% url 'BINA_Q_users:logout_confirmation' %}">Logout</a>
+<a href="{% url 'BINA_Q_users:dashboard_update' %}">Edit Profile</a>
+{% endblock %}

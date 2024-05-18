@@ -1,0 +1,130 @@
+{
+    "ods_codes": [
+        {
+            "ods_code": "ODS001",
+            "organisation_name": "General Hospital",
+            "address": "123 Main St, Townsville",
+            "contact_number": "123-456-7890"
+        },
+        {
+            "ods_code": "ODS002",
+            "organisation_name": "City Clinic",
+            "address": "456 Elm St, Metropolis",
+            "contact_number": "234-567-8901"
+        },
+        {
+            "ods_code": "ODS003",
+            "organisation_name": "Children's Hospital",
+            "address": "789 Oak St, Smallville",
+            "contact_number": "345-678-9012"
+        },
+        {
+            "ods_code": "ODS004",
+            "organisation_name": "Skin Care Center",
+            "address": "101 Maple St, Springfield",
+            "contact_number": "456-789-0123"
+        },
+        {
+            "ods_code": "ODS005",
+            "organisation_name": "Orthopedic Hospital",
+            "address": "202 Pine St, Rivertown",
+            "contact_number": "567-890-1234"
+        },
+        {
+            "ods_code": "ODS006",
+            "organisation_name": "Cancer Treatment Center",
+            "address": "303 Cedar St, Lakewood",
+            "contact_number": "678-901-2345"
+        },
+        {
+            "ods_code": "ODS007",
+            "organisation_name": "Mental Health Clinic",
+            "address": "404 Birch St, Greenfield",
+            "contact_number": "789-012-3456"
+        },
+        {
+            "ods_code": "ODS008",
+            "organisation_name": "Rehabilitation Center",
+            "address": "505 Walnut St, Hilltown",
+            "contact_number": "890-123-4567"
+        },
+        {
+            "ods_code": "ODS009",
+            "organisation_name": "Digestive Health Center",
+            "address": "606 Chestnut St, Brooksville",
+            "contact_number": "901-234-5678"
+        },
+        {
+            "ods_code": "ODS010",
+            "organisation_name": "Women's Health Clinic",
+            "address": "707 Fir St, Pineville",
+            "contact_number": "012-345-6789"
+        },
+        {
+            "ods_code": "ODS011",
+            "organisation_name": "Communication Disorders Center",
+            "address": "808 Cedar St, Elmwood",
+            "contact_number": "123-456-7891"
+        },
+        {
+            "ods_code": "ODS012",
+            "organisation_name": "Hormone Health Clinic",
+            "address": "909 Ash St, Mapleton",
+            "contact_number": "234-567-8902"
+        },
+        {
+            "ods_code": "ODS013",
+            "organisation_name": "Kidney Care Center",
+            "address": "1010 Sycamore St, Birchwood",
+            "contact_number": "345-678-9013"
+        },
+        {
+            "ods_code": "ODS014",
+            "organisation_name": "Rehabilitation Services",
+            "address": "1111 Hemlock St, Oakdale",
+            "contact_number": "456-789-0124"
+        },
+        {
+            "ods_code": "ODS015",
+            "organisation_name": "Respiratory Care Clinic",
+            "address": "1212 Aspen St, Pinewood",
+            "contact_number": "567-890-1235"
+        },
+        {
+            "ods_code": "ODS016",
+            "organisation_name": "Senior Care Center",
+            "address": "1313 Pine St, Cedarville",
+            "contact_number": "678-901-2346"
+        },
+        {
+            "ods_code": "ODS017",
+            "organisation_name": "Hearing Health Clinic",
+            "address": "1414 Elm St, Redwood",
+            "contact_number": "789-012-3457"
+        },
+        {
+            "ods_code": "ODS018",
+            "organisation_name": "Joint and Bone Clinic",
+            "address": "1515 Maple St, Oakwood",
+            "contact_number": "890-123-4568"
+        },
+        {
+            "ods_code": "ODS019",
+            "organisation_name": "Imaging Center",
+            "address": "1616 Cedar St, Birchfield",
+            "contact_number": "901-234-5679"
+        },
+        {
+            "ods_code": "ODS020",
+            "organisation_name": "Nutrition Clinic",
+            "address": "1717 Birch St, Mapleton",
+            "contact_number": "012-345-6780"
+        },
+        {
+            "ods_code": "ODS021",
+            "organisation_name": "Infectious Disease Center",
+            "address": "1818 Ash St, Redwood",
+            "contact_number": "123-456-7892"
+        }
+    ]
+}
