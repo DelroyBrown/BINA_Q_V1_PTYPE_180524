@@ -1,11 +1,99 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-<h1>Confirm Your Details</h1>
-<h1>Confirm Your Details</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Confirm</button>
-</form>
-{% endblock %}
+<div class="authincation h-100">
+    <div class="container h-100">
+        <div class="row justify-content-center h-100 align-items-center">
+            <div class="col-md-6">
+                <div class="authincation-content">
+                    <div class="row no-gutters">
+                        <div class="col-xl-12">
+                            <div class="auth-form">
+                                <div class="text-center mb-3">
+                                    <a href="">
+                                        <img style="height: 80px;"
+                                        src="{% static 'images/bina_logo.png' %}" alt="">
+                                    </a>
+                                </div>
+                                <h4 class="text-center mb-4">Please Confirm The Details of The Healthcare Worker</h4>
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="id_identifier" class="form-label">Identifier:</label>
+                                        <input class="form-control" type="text" name="identifier" maxlength="50"
+                                            required id="id_identifier" value="{{ form.initial.identifier }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="id_first_name">First name:</label>
+                                        <input class="form-control" type="text" name="first_name" maxlength="250"
+                                            required id="id_first_name" value="{{ form.initial.first_name }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="id_last_name">Last name:</label>
+                                        <input class="form-control" type="text" name="last_name" maxlength="250"
+                                            required id="id_last_name" value="{{ form.initial.last_name }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="id_license_number">License number:</label>
+                                        <input class="form-control" type="text" name="license_number" maxlength="50"
+                                            required id="id_license_number" value="{{ form.initial.license_number }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="id_specialization">Specialization:</label>
+                                        <input class="form-control" type="text" name="specialization" maxlength="100"
+                                            required id="id_specialization" value="{{ form.initial.specialization }}">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="id_organisation_affiliation">Organisation
+                                            affiliation:</label>
+                                        <input class="form-control" type="text" name="organisation_affiliation"
+                                            maxlength="100" required id="id_organisation_affiliation"
+                                            value="{{ form.initial.organisation_affiliation }}">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="id_email">Email:</label>
+                                        <input class="form-control" type="email" name="email" maxlength="255" required
+                                            id="id_email" value="{{ form.initial.email }}">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="id_ods_code">ODS code:</label>
+                                        <input class="form-control" type="text" name="ods_code" maxlength="50" required
+                                            id="id_ods_code" value="{{ form.initial.ods_code }}">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="id_organisation_name">Organisation name:</label>
+                                        <input class="form-control" type="text" name="organisation_name" maxlength="255"
+                                            required id="id_organisation_name"
+                                            value="{{ form.initial.organisation_name }}">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="id_address">Address:</label>
+                                        <input class="form-control" type="text" name="address" maxlength="500" required
+                                            id="id_address" value="{{ form.initial.address }}">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="id_contact_number">Contact number:</label>
+                                        <input class="form-control" type="text" name="contact_number" maxlength="50"
+                                            required id="id_contact_number" value="{{ form.initial.contact_number }}">
+
+                                    </div>
+
+                                    <div class="text-center mt-4">
+                                        <button type="submit" class="btn btn-primary btn-block">Confirm Details</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>{% endblock %}

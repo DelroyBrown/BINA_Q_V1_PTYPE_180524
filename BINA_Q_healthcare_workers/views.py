@@ -67,13 +67,11 @@ def retrieve_data(request):
     if not identifier or not email:
         return redirect("BINA_healthcare_workers:register")
 
-    # Here's where i load the healthcare worker data from the json file
     with open(
         settings.BASE_DIR / "BINA_Q_healthcare_workers/fixtures/healthcare_workers.json"
     ) as f:
         healthcare_workers = json.load(f)
 
-    # Here's where i find the healthcare worker by the identifier
     healthcare_worker_data = next(
         (
             worker
@@ -90,13 +88,11 @@ def retrieve_data(request):
             {"message": "Healthcare worker not found!"},
         )
 
-    # Here's where I load the ODS data from the json file
     with open(
         settings.BASE_DIR / "BINA_Q_healthcare_workers/fixtures/ods_codes.json"
     ) as f:
         ods_codes = json.load(f)
 
-    # Here's where i search for the ODS code details
     ods_data = next(
         (
             ods
@@ -113,7 +109,6 @@ def retrieve_data(request):
             {"message": "ODS Code not found!"},
         )
 
-    # Here's where i combine the data
     combined_data = {
         "identifier": healthcare_worker_data["identifier"],
         "first_name": healthcare_worker_data["first_name"],
@@ -131,7 +126,6 @@ def retrieve_data(request):
     if request.method == "POST":
         form = ConfirmationForm(request.POST)
         if form.is_valid():
-            # Herte's where i save the CONFIRMED data to the session
             request.session["confirmed_data"] = form.cleaned_data
             return redirect("BINA_Q_healthcare_workers:complete_registration")
     else:
