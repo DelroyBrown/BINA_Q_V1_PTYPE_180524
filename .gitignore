@@ -122,6 +122,8 @@ venv.bak/
 ignore.html
 DONTREADME.MD
 
+dashboard copy.html
+
 # sftp configuration file 
 sftp-config.json 
 

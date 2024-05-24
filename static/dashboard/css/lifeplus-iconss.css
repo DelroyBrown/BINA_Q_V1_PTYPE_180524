@@ -1,0 +1,324 @@
+/* ------------------------
+    Flat Icon
+------------------------*/
+@font-face {
+    font-family: "flaticon_mycollection";
+    src: url("/static/css/flaticon_mycollection.ttf") format("truetype"),
+        url("../fonts/flaticon_mycollection.woff?2ba31d7f53528a419fb15e65ffea1724") format("woff"),
+        url("../fonts/flaticon_mycollection.woff2?2ba31d7f53528a419fb15e65ffea1724") format("woff2"),
+        url("../fonts/flaticon_mycollection.eot?2ba31d7f53528a419fb15e65ffea1724#iefix") format("embedded-opentype"),
+        url("../fonts/flaticon_mycollection.svg?2ba31d7f53528a419fb15e65ffea1724#flaticon_mycollection") format("svg");
+}
+
+i[class^="flaticon-"]:before,
+i[class*=" flaticon-"]:before {
+    font-family: flaticon_mycollection !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    vertical-align: -0.125em;
+}
+
+.flaticon-pediatrics:before {
+    content: "\f101";
+}
+
+.flaticon-bladder:before {
+    content: "\f102";
+}
+
+.flaticon-breast-cancer:before {
+    content: "\f103";
+}
+
+.flaticon-dermatoscope:before {
+    content: "\f104";
+}
+
+.flaticon-oncology:before {
+    content: "\f105";
+}
+
+.flaticon-lung:before {
+    content: "\f106";
+}
+
+.flaticon-cancer-ribbon:before {
+    content: "\f107";
+}
+
+.flaticon-search:before {
+    content: "\f108";
+}
+
+.flaticon-tumor:before {
+    content: "\f109";
+}
+
+.flaticon-oncology-1:before {
+    content: "\f10a";
+}
+
+.flaticon-oncology-2:before {
+    content: "\f10b";
+}
+
+.flaticon-cancer-cell:before {
+    content: "\f10c";
+}
+
+.flaticon-hematology:before {
+    content: "\f10d";
+}
+
+.flaticon-woman:before {
+    content: "\f10e";
+}
+
+.flaticon-radiation:before {
+    content: "\f10f";
+}
+
+.flaticon-robotic-surgery:before {
+    content: "\f110";
+}
+
+.flaticon-thyroid:before {
+    content: "\f111";
+}
+
+.flaticon-prostate:before {
+    content: "\f112";
+}
+
+.flaticon-prostate-cancer:before {
+    content: "\f113";
+}
+
+.flaticon-radiotherapy:before {
+    content: "\f114";
+}
+
+.flaticon-skin-cancer:before {
+    content: "\f115";
+}
+
+.flaticon-pediatrics-1:before {
+    content: "\f116";
+}
+
+.flaticon-blood:before {
+    content: "\f117";
+}
+
+.flaticon-brain:before {
+    content: "\f118";
+}
+
+.flaticon-pancreatitis:before {
+    content: "\f119";
+}
+
+.flaticon-leukemia:before {
+    content: "\f11a";
+}
+
+.flaticon-oncology-3:before {
+    content: "\f11b";
+}
+
+.flaticon-kidney-cancer:before {
+    content: "\f11c";
+}
+
+.flaticon-uterine:before {
+    content: "\f11d";
+}
+
+.flaticon-diagnosis:before {
+    content: "\f11e";
+}
+
+.flaticon-oncology-4:before {
+    content: "\f11f";
+}
+
+.flaticon-oncology-5:before {
+    content: "\f120";
+}
+
+.flaticon-oncology-6:before {
+    content: "\f121";
+}
+
+.flaticon-treatment:before {
+    content: "\f122";
+}
+
+.flaticon-oncology-7:before {
+    content: "\f123";
+}
+
+.flaticon-pink-ribbon:before {
+    content: "\f124";
+}
+
+.flaticon-skin-cancer-1:before {
+    content: "\f125";
+}
+
+.flaticon-first-aid-kit:before {
+    content: "\f126";
+}
+
+.flaticon-blood-test:before {
+    content: "\f127";
+}
+
+.flaticon-oncology-8:before {
+    content: "\f128";
+}
+
+.flaticon-oncology-9:before {
+    content: "\f129";
+}
+
+.flaticon-up-arrow:before {
+    content: "\f12a";
+}
+
+.flaticon-next:before {
+    content: "\f12b";
+}
+
+.flaticon-left:before {
+    content: "\f12c";
+}
+
+.flaticon-back:before {
+    content: "\f12d";
+}
+
+.flaticon-next-1:before {
+    content: "\f12e";
+}
+
+.flaticon-certificate:before {
+    content: "\f12f";
+}
+
+.flaticon-award:before {
+    content: "\f130";
+}
+
+.flaticon-award-1:before {
+    content: "\f131";
+}
+
+.flaticon-plus:before {
+    content: "\f132";
+}
+
+.flaticon-tag:before {
+    content: "\f133";
+}
+
+.flaticon-location:before {
+    content: "\f134";
+}
+
+.flaticon-working-hours:before {
+    content: "\f135";
+}
+
+.flaticon-chat:before {
+    content: "\f136";
+}
+
+.flaticon-doctor-consultation:before {
+    content: "\f137";
+}
+
+.flaticon-doctor-appointment:before {
+    content: "\f138";
+}
+
+.flaticon-tick:before {
+    content: "\f139";
+}
+
+.flaticon-new-document:before {
+    content: "\f13a";
+}
+
+.flaticon-file:before {
+    content: "\f13b";
+}
+
+.flaticon-reply:before {
+    content: "\f13c";
+}
+
+.flaticon-comment:before {
+    content: "\f13d";
+}
+
+.flaticon-doctor:before {
+    content: "\f13e";
+}
+
+.flaticon-calendar:before {
+    content: "\f13f";
+}
+
+.flaticon-close:before {
+    content: "\f140";
+}
+
+.flaticon-search-1:before {
+    content: "\f141";
+}
+
+.flaticon-dribbble:before {
+    content: "\f142";
+}
+
+.flaticon-instagram:before {
+    content: "\f143";
+}
+
+.flaticon-linkedin:before {
+    content: "\f144";
+}
+
+.flaticon-twitter:before {
+    content: "\f145";
+}
+
+.flaticon-facebook-app-symbol:before {
+    content: "\f146";
+}
+
+.flaticon-24-hours:before {
+    content: "\f147";
+}
+
+.flaticon-quote:before {
+    content: "\f148";
+}
+
+.flaticon-health-insurance:before {
+    content: "\f149";
+}
+
+.flaticon-medical-team:before {
+    content: "\f14a";
+}
+
+.flaticon-nurse:before {
+    content: "\f14b";
+}
