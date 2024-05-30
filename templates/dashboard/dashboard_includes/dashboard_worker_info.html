@@ -1,0 +1,89 @@
+{% load static %}
+
+<style>
+    .phone-icon {
+        color: #FD6262;
+    }
+</style>
+
+<div class="profile-info-box col-sm-12 col-xl-6 d-md-flex justify-content-center justify-content-sm-start">
+    <div class="profile">
+        <div class="staff">
+            {% if request.user.healthcare_worker.organisation.organisation_logo %}
+            <img src="{{ request.user.healthcare_worker.organisation.organisation_logo.url }}" alt="Profile Image">
+            {% else %}
+            <!-- THIS IS THE CURRENT PROFILE IMAGE -->
+            <div style="width: 250px; height: 250px;"
+                class="profile-main-image d-md-flex justify-content-md-center align-items-md-center">
+                <svg xmlns:xlink="http://www.w3.org/1999/xlink"
+                    preserveAspectRatio="xMidYMid meet"
+                    data-bbox="20.303 25.565 159.393 148.871"
+                    viewBox="20.303 25.565 159.393 148.871" height="150" width="150"
+                    xmlns="http://www.w3.org/2000/svg" data-type="color" role="img"
+                    aria-label="Homepage">
+                    <defs>
+                        <style>
+                            #comp-kk2o699z svg [data-color="1"] {
+                                fill: #FFFFFF;
+                            }
+                        </style>
+                    </defs>
+                    <g>
+                        <path
+                            d="M179.398 97.035c-2.089-12.835-17.014-19.402-28.953-14.029l-12.537 5.671c-11.94 5.373-25.371 5.373-37.311 0L88.06 83.006C76.12 77.633 61.196 84.2 59.107 97.035c-.299.895-.299 2.089-.299 3.283 0 .895 0 2.089.299 3.283 2.089 12.835 17.014 19.402 28.953 14.029l12.537-5.671c11.94-5.373 25.371-5.373 37.311 0l12.537 5.671c11.94 5.373 26.864-1.194 28.953-14.029.298-.895.298-2.089.298-3.283 0-.895 0-2.089-.298-3.283z"
+                            fill="#FD6262" data-color="1"></path>
+                        <path
+                            d="M49.556 62.112l12.537-5.671c11.94-5.373 25.371-5.373 37.311 0l12.537 5.671c11.94 5.373 26.864-1.194 28.953-14.029.298-.895.298-2.089.298-3.283 0-.895 0-2.089-.298-3.283-2.089-12.835-17.014-19.402-28.953-14.029l-12.537 5.671c-11.94 5.373-25.371 5.373-37.311 0l-12.537-5.671c-11.94-5.373-26.864.895-28.953 14.029-.299.895-.299 2.089-.299 3.283 0 .896 0 2.089.299 3.283 2.089 12.835 17.013 19.402 28.953 14.029z"
+                            fill="#FD6262" data-color="1"></path>
+                        <path
+                            d="M111.94 137.928l-12.537 5.671c-11.94 5.373-25.371 5.373-37.311 0l-12.537-5.671c-11.94-5.373-26.864 1.194-28.953 14.029-.299.895-.299 2.089-.299 3.283 0 .896 0 2.089.299 3.283 2.089 12.835 17.014 19.402 28.953 14.029l12.537-5.671c11.94-5.373 25.371-5.373 37.311 0l12.537 5.671c11.94 5.373 26.864-1.194 28.953-14.029.298-.896.298-2.089.298-3.283 0-.895 0-2.089-.298-3.283-2.089-12.836-17.014-19.402-28.953-14.029z"
+                            fill="#FD6262" data-color="1"></path>
+                    </g>
+                </svg>
+            </div>
+            {% endif %}
+        </div>
+        <div class="staff-2-info">
+            <div class="staff-3-info">
+                <div class="d-flex align-items-center mb-2">
+                    <h4 class="mb-0">BINA-Q ID:</h4>
+                    <p class="ms-2 mb-0">{{ user.bina_q_id }}</p>
+                </div>
+                <div class="d-flex align-items-center mb-2">
+                    <h4 class="mb-0">Name :</h4>
+                    <p class="ms-2 mb-0">
+                        {{ user.first_name }}
+                        {% if worker.other_names %}
+                        {{ worker.other_names }}
+                        {% endif %}
+                        {{ user.last_name }}
+                    </p>
+                </div>
+                <div class="d-flex align-items-center mb-2">
+                    <h4 class="mb-0">Email:</h4>
+                    <p class="ms-2 mb-0">
+                        {{ user.email }}
+                    </p>
+                </div>
+                <div class="d-flex align-items-center mb-2">
+                    <h4 class="mb-0">Specialisation:</h4>
+                    <p class="ms-2 mb-0">{{ healthcare_worker.specialization }}</p>
+                </div>
+                <div class="d-flex align-items-center mb-2">
+                    <h4 class="mb-0">Organisation:</h4>
+                    <p class="ms-2 mb-0">{{ organisation_details.organisation_name }}</p>
+                </div>
+                <div class="d-flex align-items-center mb-2">
+                    <h4 class="mb-0">Organisation Address:</h4>
+                    <p class="ms-2 mb-0">{{ organisation_details.address }}</p>
+                </div>
+                <div class="d-flex align-items-center mb-2">
+                    <h4 class="mb-0">Contact Number:</h4>
+                    <p class="ms-2 mb-0">{{ organisation_details.contact_number }}</p>
+                </div>
+
+            </div>
+          
+        </div>
+    </div>
+</div>

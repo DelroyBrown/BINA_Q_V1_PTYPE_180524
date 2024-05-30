@@ -6,7 +6,10 @@
 
     
 
-    <div id="main-wrapper" class="show">
+    <div id="main-wrapper">
+		{% include 'global_includes/sidebar.html' %}
+		{% include 'global_includes/nav_header.html' %}
+		{% include 'global_includes/header.html' %}
        
 		
 		<!--**********************************
@@ -22,114 +25,34 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="row">
-									<div class="col-xl-8">
-										<div class="profile">
-											<div class="staff">
-												<img src="images/nurse.jpg" alt="">
-											</div>
-											<div class="staf-info">
-												<div>
-													<div class="d-flex align-items-center mb-2">
-														<h4 class="mb-0">BINA-Q ID :</h4><p class="ms-2 mb-0">{{ user.bina_q_id }}</p>
-													</div>
-													<div class="d-flex align-items-center mb-2">
-														<h4 class="mb-0">Name :</h4><p class="ms-2 mb-0">{{ user.first_name }} {{ user.last_name }}</p>
-													</div>
-													
-													<div class="d-flex align-items-center mb-2">
-														<h4 class="mb-0">Email :</h4><p class="ms-2 mb-0">{{ user.email }}</p>
-													</div>
-													<div class="d-flex align-items-center mb-2">
-														<h4 class="mb-0">Specialization :</h4>
-                                                        <p class="ms-2 mb-0">
-                                                            {{ healthcare_worker.specialization }}
-                                                        </p>
-													</div>
-													<div class="d-flex align-items-center mb-2">
-														<h4 class="mb-0">Organisation :</h4>
-                                                        <p class="ms-2 mb-0">
-                                                            {{ organisation_details.organisation_name }}
-                                                        </p>
-													</div>
-													<div class="d-flex align-items-center mb-2">
-														<h4 class="mb-0">Organisation Contact:</h4>
-                                                        <p class="ms-2 mb-0">
-                                                            {{ organisation_details.contact_number }}
-                                                        </p>
-													</div>
-												</div>
-												<div class="location mt-4">
-													<div class="mb-3">
-														<span>
-                                                            <i class="fa-solid fa-location-dot me-2 text-primary"></i>
-                                                            {{ organisation_details.address }}
-                                                        </span>
-														<span><i class="fa fa-building text-secondary me-2"></i> ICU Department</span>
-													</div>
-													<div>
-														<span><i class="fa fa-phone me-2 text-primary"></i> +1 1234598767</span>
-														<span><i class="fa fa-envelope me-2 text-secondary"></i>hello@gmail.com</span>
-													</div>	
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-xl-4">
-										<div class="d-flex justify-content-between border-bottom mb-3 pb-2 mt-xl-0 mt-3">
-											<span class="font-w600 text-black">Followers</span>
-											<span>500</span>
-										</div>
-										<div class="d-flex justify-content-between border-bottom mb-3 pb-2">
-											<span class="font-w600 text-black">Following</span>
-											<span>300</span>
-										</div>
-										<div class="d-flex justify-content-between mb-3 pb-2">
-											<span class="font-w600 text-black">Friends</span>
-											<span>300</span>
-										</div>
-										<div class="mt-4">
-											<button id="follow-button" class="btn btn-primary">Follow</button>
-											<a href="javascript:void(0);" class="btn btn-secondary">Message</a>
-										</div>
-									</div>
+									<!-- HEALTHCARE WORKER INFORMATION -->
+									{% include 'dashboard/dashboard_includes/dashboard_worker_info.html' %}
+									
+									<!-- HEALTHCARE WORKER NOTES -->
+									{% include 'dashboard/dashboard_includes/dashboard_hw_profile_notes.html' %}
+	
+									<!-- UPCOMING APPOINTMENTS -->
 									<div class="mt-5">
-										<h4 class="fs-20 font-w600">About Me</h4>
-										<div class="staff-info">
-											<p><i class="fas fa-dot-circle me-2 text-primary"></i>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-											</p>
-											<p><i class="fas fa-dot-circle me-2 text-primary"></i>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-											</p>
+										<div class="staff-info row">
+											<div class="col-xl-4 col-xxl-4 col-lg-4">
+												<div class="mt-5">
+													{% include 'dashboard/dashboard_includes/dashboard_urgent_cases.html' %}
+												</div>
+												<hr>
+											</div>
+											<div class="col-xl-4 col-xxl-4 col-lg-4">
+												<div class="mt-5">
+													{% include 'dashboard/dashboard_includes/dashboard_urgent_cases.html' %}
+												</div>
+												<hr>
+											</div>
+											<div class="col-xl-4 col-xxl-4 col-lg-4">
+												<div class="mt-5">
+													{% include 'dashboard/dashboard_includes/dashboard_notification.html' %}
+												</div>
+												<hr>
+											</div>
 										</div>
-
-									</div>
-									<hr>
-									<h4 class="fs-20 font-w600">Appointment Schdule</h4>
-									<div class="staff-info">
-										<p><i class="fas fa-dot-circle me-2 text-primary"></i>Identify patients’ care requirements, focus on their needs and act on them</p>
-										<p><i class="fas fa-dot-circle me-2 text-primary "></i>Nurture a compassionate environment by providing psychological support</p>
-										<p><i class="fas fa-dot-circle me-2 text-primary"></i>Resolve or report on patients’ needs or problems</p>
-										<p><i class="fas fa-dot-circle me-2 text-primary"></i>Prepare patients for examinations and perform routine diagnostic checks (monitor pulse, blood pressure and temperature, provide drugs and injections etc)</p>
-										<p><i class="fas fa-dot-circle me-2 text-primary"></i>Monitor and record patient’s condition and document provided care services</p>
-										<p><i class="fas fa-dot-circle me-2 text-primary"></i>Treat medical emergencies</p>
-									</div>
-									<hr>
-									<h4 class="fs-20 font-w600">Experience</h4>
-									<div class="staff-info">
-										<p><i class="fas fa-dot-circle me-2 text-primary"></i>Lorem Ipsum is simply dummy text of the printing and typesetting industrypsychological suppor.</p>
-										<p><i class="fas fa-dot-circle me-2 text-primary"></i>Nurture a compassionate environment by providing psychological support</p>
-										<p><i class="fas fa-dot-circle me-2 text-primary"></i>Lorem Ipsum is simply dummy text of the printing and typesetting industry psychological suppor.</p>
-										<p><i class="fas fa-dot-circle me-2 text-primary"></i>PLorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-										<p><i class="fas fa-dot-circle me-2 text-primary"></i>Monitor and record patient’s condition and document provided care services</p>
-									</div>
-									<hr>
-									<div class="col-lg-12">
-										<h4 class="fs-20 font-w600">Education</h4>
-										<div class="staff-info">
-											<p><i class="fas fa-dot-circle me-2 text-primary"></i>Lorem Ipsum is simply dummy text of the printing and typesetting industrypsychological suppor.</p>
-											<p><i class="fas fa-dot-circle me-2 text-primary"></i>Nurture a compassionate environment by providing psychological support</p>
-											<p><i class="fas fa-dot-circle me-2 text-primary"></i>Lorem Ipsum is simply dummy text of the printing and typesetting industry psychological suppor.</p>
-										</div>
-										<hr>
 									</div>
 								</div>
 							</div>
@@ -252,8 +175,8 @@
     <!-- Required vendors -->
 	
 	<!-- Datatable -->
-	<script src="js/demo.js"></script>
-    <script src="js/styleSwitcher.js"></script>
+	<!-- <script src="js/demo.js"></script>
+    <script src="js/styleSwitcher.js"></script> -->
 	
 	<script>
 		// script.js

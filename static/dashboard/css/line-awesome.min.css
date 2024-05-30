@@ -5854,7 +5854,7 @@
     font-weight: 900;
     font-display: auto;
     src: url(../fonts/la-solid-900.eot);
-    src: url(../fonts/la-solid-900.eot?#iefix) format("embedded-opentype"), url("/static/healthcare_worker_profile/icons/la-solid-900.woff2") format("woff2"), url(../fonts/la-solid-900.woff) format("woff"), url(../fonts/la-solid-900.ttf) format("truetype"), url(../fonts/la-solid-900.svg#lineawesome) format("svg")
+    src: url(../fonts/la-solid-900.eot?#iefix) format("embedded-opentype"), url("/static/dashboard/css/la-solid-900.woff2") format("woff2"), url(../fonts/la-solid-900.woff) format("woff"), url(../fonts/la-solid-900.ttf) format("truetype"), url(../fonts/la-solid-900.svg#lineawesome) format("svg")
 }
 
 .la,

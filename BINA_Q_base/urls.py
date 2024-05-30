@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
@@ -10,4 +12,4 @@ urlpatterns = [
     path("pharmacies/", include("BINA_Q_pharmacies.urls")),
     path("roles/", include("BINA_Q_roles.urls")),
     path("users/", include("BINA_Q_users.urls")),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

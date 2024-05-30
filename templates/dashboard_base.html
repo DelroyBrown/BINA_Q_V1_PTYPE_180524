@@ -21,20 +21,20 @@
     <link rel="stylesheet" type="text/css" href="{% static 'dashboard/css/themify-icons.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'dashboard/css/simple-line-icons.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'dashboard/css/style.css' %}">
-    <script src="{% static 'dashboard/javascript/global.min.js' %}"></script>
-    <script src="{% static 'dashboard/javascript/bootstrap-select.min.js' %}"></script>
-    <script src="{% static 'dashboard/javascript/custom.min.js' %}"></script>
-    <script src="{% static 'dashboard/javascript/deznav-init.js' %}"></script>
+    <script type="text/javascript" src="{% static 'dashboard/js/global.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'dashboard/js/bootstrap-select.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'dashboard/js/deznav-init.js' %}"></script>
+    <script type="text/javascript" src="{% static 'dashboard/js/demo.js' %}"></script>
+    <script type="text/javascript" src="{% static 'dashboard/js/custom.min.js' %}"></script>
 
 
 </head>
 
 <body class="">
 
-    {% include 'global_includes/nav_header.html' %}
-    {% include 'global_includes/header.html' %}
+  
     {% include 'global_includes/chat.html' %}
-    {% include 'global_includes/sidebar.html' %}
+ 
     {% block content %}
     {% endblock %}
     {% include 'global_includes/footer.html' %}

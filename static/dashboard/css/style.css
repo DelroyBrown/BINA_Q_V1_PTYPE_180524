@@ -62,17 +62,17 @@
 @import url("/static/dashboard/css/materialdesignicons.min.css");
 @import url("/static/dashboard/css/themify-icons.css");
 @import url("/static/dashboard/css/line-awesome.min.css");
-@import url("./../icons/avasta/css/style.css");
+@import url("/static/dashboard/css/style.css");
 @import url("/static/dashboard/css/flaticon.css");
 @import url("/static/dashboard/css/icomoon.css");
-@import url("/static/dashboard/css/animate.min.css");
+@import url('/static/dashboard/css/animate.min.css');
 @import url("/static/dashboard/css/perfect-scrollbar.css");
 @import url("/static/dashboard/css/metisMenu.min.css");
 
 :root {
-    --primary: #36C95F;
-    --secondary: #A336C9;
-    --primary-hover: #2ba14c;
+    --primary: #FD6262;
+    --secondary: #889CE7;
+    --primary-hover: #fd626281;
     --primary-light: #afe9bf;
     --primary-dark: #165026;
     --rgba-primary-1: rgba(54, 201, 95, 0.1);
@@ -38199,4 +38199,4 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     }
 }
 
-/*# sourceMappingURL=style.css.map */
+/* # sourceMappingURL=style.css.map */
