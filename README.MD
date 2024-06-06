@@ -1,154 +1,59 @@
+### Summary of Work Done
 
-# BINA-Q Registration and Login System
+1. **Registration and Data Retrieval**:
+   - Implemented functionality for healthcare workers to register by entering their license code.
+   - Retrieved healthcare worker details from a JSON file based on the entered license code.
+   - Allowed users to view and edit the retrieved details before confirming registration.
+   - Sent an email to the user with a generated BINA-Q ID and temporary password upon confirmation.
 
-## Overview
+2. **Login Functionality**:
+   - Implemented login functionality allowing users to log in using their BINA-Q ID and password.
+   - Ensured users with temporary passwords are prompted to change their password on first login.
 
-The BINA-Q Registration and Login System is designed to manage the registration and login of healthcare workers and pharmacies. Admin workers will register healthcare workers using PRN and ODS codes, which provide necessary information for registration. Pharmacies can also sign up to manage and display their stock. Upon registration, healthcare workers and pharmacies will receive a BINA-Q ID and a temporary password via email. They will use these credentials to log in, update their password, and access their dashboard. The system includes a customized admin panel for managing all user information and supports future integration with a Flutter app for searching healthcare workers based on their role and specialization.
+3. **Dashboard**:
+   - Created a dashboard view displaying user details and healthcare worker details.
+   - Retrieved and displayed organization details based on the healthcare worker's ODS code from a JSON file.
 
-## Key Features
+4. **Profile Management**:
+   - Implemented profile update functionality allowing users to update their personal details.
+   - Added functionality to update healthcare worker's ODS code and retrieve corresponding organization details.
+   - Used AJAX for smooth user experience when updating ODS code.
 
-1. **Admin Registration for Healthcare Workers:**
-   - Admins register healthcare workers using PRN and ODS codes.
-   - Fetch and display healthcare worker and occupation details based on these codes.
+5. **Logout Functionality**:
+   - Implemented a logout confirmation view to ask users if they are sure before logging out.
 
-2. **Pharmacy Registration:**
-   - Pharmacies can sign up and manage their stock.
-   - Track available stock and display it as needed.
+6. **Form and View Implementations**:
+   - Created forms for user profile updates and ODS code updates.
+   - Integrated these forms into the dashboard update view.
+   - Ensured data validation and error handling in forms.
 
-3. **BINA-Q ID and Temporary Password:**
-   - Generate BINA-Q IDs using a combination of the user’s name and random characters.
-   - Generate and send a temporary password via email.
+7. **Testing and Error Handling**:
+   - Performed thorough testing of all implemented features.
+   - Handled various edge cases and ensured robust error handling.
 
-4. **User Login and Password Update:**
-   - Users log in with their BINA-Q ID and temporary password.
-   - Prompt them to update their password upon first login.
+8. **User Experience Enhancements**:
+   - Improved the UI/UX for smoother interactions.
+   - Added validation and error messages to forms.
 
-5. **User Dashboard:**
-   - Display relevant information and provide access to necessary features for healthcare workers and pharmacies.
+9. **Security and Permissions**:
+   - Protected all views and forms to ensure only authenticated and authorized users can access them.
+   - Implemented necessary security measures to protect user data.
 
-6. **Admin Panel:**
-   - Customize the Django admin panel to display detailed information about healthcare workers, pharmacies, and their stock.
+10. **Documentation and Code Cleanup**:
+    - Ensured the code follows best practices.
+    - Cleaned up the codebase and removed debug statements.
 
-7. **Search Functionality:**
-   - Implement a search feature to find healthcare workers based on their role and specialization.
-   - Future-ready API endpoints for integration with a Flutter app.
+11. **Organization Members Viewing**:
+    - Implemented a feature where users from the same organization can view each other's details.
+    - Created a view to list organization members based on the `ods_code`.
+    - Added a template to display the list of organization members.
+    - Linked the new view from the dashboard.
 
-## Project Setup
-
-1. **Create Project and Apps:**
-   - Create a new Django project.
-   - Create the following apps: `users`, `healthcare_workers`, `pharmacies`, `roles`, `organizations`, `common`.
-
-2. **Define Models in Their Respective Apps:**
-   - `users/models.py`:
-     - Create `User` model inheriting from `AbstractUser`.
-     - Create `AdminWorker` model.
-   - `healthcare_workers/models.py`:
-     - Create `HealthcareWorker` model with foreign keys to `Role` and `Organization`.
-   - `pharmacies/models.py`:
-     - Create `Pharmacy` model.
-     - Create `StockItem` model.
-   - `roles/models.py`:
-     - Create `Role` model to define different healthcare roles.
-   - `organizations/models.py`:
-     - Create `Organization` model to store healthcare organization details.
-   - `common/utils.py`:
-     - Implement shared utilities and data loading functions.
-
-## Store Fake PRN and ODS Data
-
-1. **Create JSON Files:**
-   - Create `prn_data.json` for fake PRN data.
-   - Create `ods_data.json` for fake ODS data.
-
-2. **Implement Data Loading Functions:**
-   - Load data from JSON files in `common/utils.py`.
-
-## User Registration by Admin
-
-1. **Create Registration Form:**
-   - Form to input PRN and ODS codes.
-   - Fetch and display data from `prn_data.json` and `ods_data.json`.
-
-2. **Generate BINA-Q ID and Temporary Password:**
-   - Generate BINA-Q ID and temporary password upon form submission.
-
-3. **Send Email:**
-   - Send an email with the BINA-Q ID and temporary password.
-
-## Pharmacy Registration and Stock Management
-
-1. **Create Pharmacy Registration Form:**
-   - Form for pharmacies to sign up and input their details.
-   - Generate BINA-Q ID and temporary password for pharmacies.
-
-2. **Manage Pharmacy Stock:**
-   - Create a model for `StockItem` to track inventory.
-   - Allow pharmacies to add, update, and remove stock items.
-
-## User Login and Password Update
-
-1. **Create Login View:**
-   - Allow login with BINA-Q ID and temporary password.
-   - Redirect to password update page upon first login.
-
-2. **Password Update Form:**
-   - Create form to update password.
-   - Ensure temporary password can only be used once.
-
-## User Dashboard
-
-1. **Create Dashboard View:**
-   - Display relevant information and features for healthcare workers and pharmacies.
-
-## Django Admin Customization
-
-1. **Customize Admin Panel:**
-   - Display detailed information about healthcare workers, pharmacies, and their stock.
-   - Include data from ODS codes and other relevant information.
-
-## Search Functionality
-
-1. **Implement Search Feature:**
-   - Allow searching for healthcare workers based on their role and specialization.
-   - Create API endpoints to support search functionality.
-
-## How the Models Work Together
-
-### HealthcareWorker Model
-
-The `HealthcareWorker` model includes foreign keys to both the `Role` and `Organization` models. This design allows for a clear and flexible relationship between healthcare workers, their roles, and their organizations.
-
-- **Role Model:** Stores information about different roles (e.g., doctor, nurse, technician).
-- **Organization Model:** Stores information about healthcare organizations (e.g., hospitals, clinics).
-
-#### Benefits
-
-- **Modular Design:** Each model is self-contained and can be managed independently.
-- **Flexible Associations:** Easily update or change roles and organizations without affecting the `HealthcareWorker` model.
-- **Efficient Searches:** Quickly filter healthcare workers by role or organization.
-- **Data Integrity:** Enforce specific validation rules and constraints for roles and organizations.
-- **Scalability:** Easily add new roles and organizations as needed.
-- **Clear Relationships:** Explicit relationships between healthcare workers, roles, and organizations make the system easier to understand and maintain.
-
-## Testing and Validation
-
-1. **Test the Entire System:**
-   - Ensure emails are sent correctly.
-   - Verify the temporary password functionality.
-   - Validate admin panel displays all necessary information.
-   - Test search functionality for healthcare workers.
-
-## Summary
-
-- **Project Setup:** Create Django project and multiple apps (`users`, `healthcare_workers`, `pharmacies`, `roles`, `organizations`, `common`).
-- **Models:** Define models in their respective apps and establish relationships between them.
-- **Fake Data:** Store fake PRN and ODS data in JSON files.
-- **Registration:** Forms for admin to register healthcare workers and pharmacies, fetching and confirming data.
-- **BINA-Q ID and Password:** Generate and email BINA-Q ID and temporary password.
-- **Login and Password Update:** Implement login and enforce password update on first login.
-- **Dashboard:** Create user dashboard for both healthcare workers and pharmacies.
-- **Admin Panel:** Customize to show detailed information for healthcare workers, pharmacies, and stock.
-- **Search Functionality:** Implement search for healthcare workers based on role and specialization, and create supporting API endpoints.
-- **Testing:** Thoroughly test the entire process.
-
+12. **Notes Functionality**:
+    - Implemented a robust note-keeping system for healthcare workers.
+    - Added functionality to create, edit, and delete notes.
+    - Integrated features to tag colleagues in notes, making the notes visible to tagged users.
+    - Enabled setting the importance of notes and adding reminders.
+    - Displayed authored and tagged notes on the user's dashboard.
+    - Ensured notes are listed in the order of creation, with the newest notes appearing first.
+    - Manually rendered form fields in the note creation and editing templates for better control over the UI.
