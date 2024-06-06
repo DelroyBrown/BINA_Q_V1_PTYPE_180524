@@ -1,0 +1,15 @@
+<!-- notes/note_detail.html -->
+{% extends 'dashboard_base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h1>{{ note.title }}</h1>
+    <p>{{ note.content }}</p>
+    <p>Importance: {{ note.get_importance_display }}</p>
+    <p>Reminder: {{ note.reminder }}</p>
+    <p>Tags: {% for tag in note.tags.all %}{{ tag.first_name }} {{ tag.last_name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+    <a href="{% url 'BINA_Q_notes:note_edit' note.id %}" class="btn btn-warning">Edit</a>
+    <a href="{% url 'BINA_Q_notes:note_list' %}" class="btn btn-secondary">Back to Notes</a>
+</div>
+{% endblock %}

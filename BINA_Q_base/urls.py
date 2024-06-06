@@ -12,4 +12,5 @@ urlpatterns = [
     path("pharmacies/", include("BINA_Q_pharmacies.urls")),
     path("roles/", include("BINA_Q_roles.urls")),
     path("users/", include("BINA_Q_users.urls")),
+    path("notes/", include("BINA_Q_notes.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

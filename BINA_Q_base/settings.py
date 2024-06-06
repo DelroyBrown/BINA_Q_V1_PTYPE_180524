@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     "BINA_Q_organisations",
     "BINA_Q_roles",
     "BINA_Q_common",
+    "BINA_Q_notes",
 ]
 
 MIDDLEWARE = [
@@ -103,13 +104,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-DEFAULT_FROM_EMAIL = 'delroybrown.db@gmail.com'
+DEFAULT_FROM_EMAIL = "delroybrown.db@gmail.com"
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
-AUTH_USER_MODEL = 'BINA_Q_users.User'
+AUTH_USER_MODEL = "BINA_Q_users.User"
 
 AUTHENTICATION_BACKENDS = [
-    'BINA_Q_users.authentication.BinaQIDBackend',
-    'django.contrib.auth.backends.ModelBackend',
+    "BINA_Q_users.authentication.BinaQIDBackend",
+    "django.contrib.auth.backends.ModelBackend",
 ]

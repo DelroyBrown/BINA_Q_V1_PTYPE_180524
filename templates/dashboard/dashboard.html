@@ -1,209 +1,188 @@
+<!-- dashboard.html -->
 {% extends 'dashboard_base.html' %}
 {% load static %}
 
 {% block content %}
 <body>
-
-    
-
     <div id="main-wrapper">
-		{% include 'global_includes/sidebar.html' %}
-		{% include 'global_includes/nav_header.html' %}
-		{% include 'global_includes/header.html' %}
-       
-		
-		<!--**********************************
-            Content body start
-        ***********************************-->
+        {% include 'global_includes/sidebar.html' %}
+        {% include 'global_includes/nav_header.html' %}
+        {% include 'global_includes/header.html' %}
+
         <div class="content-body">
-            <!-- row -->
-			<div class="container-fluid">
-				<div class="d-md-flex align-items-center">
-				</div>
-				<div class="row">
-					<div class="col-xl-12">
-						<div class="card">
-							<div class="card-body">
-								<div class="row">
-									<!-- HEALTHCARE WORKER INFORMATION -->
-									{% include 'dashboard/dashboard_includes/dashboard_worker_info.html' %}
-									
-									<!-- HEALTHCARE WORKER NOTES -->
-									{% include 'dashboard/dashboard_includes/dashboard_hw_profile_notes.html' %}
-	
-									<!-- UPCOMING APPOINTMENTS -->
-									<div class="mt-5">
-										<div class="staff-info row">
-											<div class="col-xl-4 col-xxl-4 col-lg-4">
-												<div class="mt-5">
-													{% include 'dashboard/dashboard_includes/dashboard_urgent_cases.html' %}
-												</div>
-												<hr>
-											</div>
-											<div class="col-xl-4 col-xxl-4 col-lg-4">
-												<div class="mt-5">
-													{% include 'dashboard/dashboard_includes/dashboard_urgent_cases.html' %}
-												</div>
-												<hr>
-											</div>
-											<div class="col-xl-4 col-xxl-4 col-lg-4">
-												<div class="mt-5">
-													{% include 'dashboard/dashboard_includes/dashboard_notification.html' %}
-												</div>
-												<hr>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <!-- HEALTHCARE WORKER INFORMATION -->
+                                    {% include 'dashboard/dashboard_includes/dashboard_worker_info.html' %}
+
+                                    <!-- HEALTHCARE WORKER NOTES -->
+                                    <div class="mt-5">
+                                        <h3>Authored Notes</h3>
+                                        <ul class="list-group mt-3">
+                                            {% for note in authored_notes %}
+                                                <li class="list-group-item">
+                                                    <a href="{% url 'BINA_Q_notes:note_detail' note.id %}">{{ note.title }}</a>
+                                                    <span class="badge bg-secondary">{{ note.get_importance_display }}</span>
+                                                    <span class="float-end">
+                                                        <a href="{% url 'BINA_Q_notes:note_edit' note.id %}" class="btn btn-sm btn-warning">Edit</a>
+                                                        <a href="{% url 'BINA_Q_notes:note_delete' note.id %}" class="btn btn-sm btn-danger">Delete</a>
+                                                    </span>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+
+                                    <div class="mt-5">
+                                        <h3>Notes You're Tagged In</h3>
+                                        <ul class="list-group mt-3">
+                                            {% for note in tagged_notes %}
+                                                <li class="list-group-item">
+                                                    <a href="{% url 'BINA_Q_notes:note_detail' note.id %}">{{ note.title }}</a>
+                                                    <span class="badge bg-secondary">{{ note.get_importance_display }}</span>
+                                                    <span class="float-end">
+                                                        <a href="{% url 'BINA_Q_notes:note_detail' note.id %}" class="btn btn-sm btn-primary">View</a>
+                                                    </span>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+
+                                    <!-- UPCOMING APPOINTMENTS -->
+                                    <div class="mt-5">
+                                        <div class="staff-info row">
+                                            <div class="col-xl-4 col-xxl-4 col-lg-4">
+                                                <div class="mt-5">
+                                                    {% include 'dashboard/dashboard_includes/dashboard_urgent_cases.html' %}
+                                                </div>
+                                                <hr>
+                                            </div>
+                                            <div class="col-xl-4 col-xxl-4 col-lg-4">
+                                                <div class="mt-5">
+                                                    {% include 'dashboard/dashboard_includes/dashboard_urgent_cases.html' %}
+                                                </div>
+                                                <hr>
+                                            </div>
+                                            <div class="col-xl-4 col-xxl-4 col-lg-4">
+                                                <div class="mt-5">
+                                                    {% include 'dashboard/dashboard_includes/dashboard_notification.html' %}
+                                                </div>
+                                                <hr>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-lg" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Book Appointment</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						<form>
-							<div class="row">
-								<div class="col-xl-12">
-									<div class="form-group">
-										<label  class="col-form-label">Title:</label>
-										<select class="form-control">
-											<option>Miss</option>
-											<option>Mr.</option>
-											<option>Mrs.</option>
-										</select>
-									</div>
-								</div>
-								<div class="col-xl-6">
-									<div class="form-group">
-										<label class="col-form-label">Name:</label>
-										<input type="text" class="form-control" id="name1" placeholder="Name">
-									</div>
-								</div>
-								<div class="col-xl-6">
-									<div class="form-group">
-										<label class="col-form-label">Last Name:</label>
-										<input type="text" class="form-control" id="name2" placeholder="Last Name">
-									</div>
-								</div>
-								<div class="col-xl-12">
-									<div class="form-group">
-										<label class="col-form-label">Date Of Appointment:</label>
-										<input size="16" type="date"  class="form-control">
-									</div>
-								</div>
-								<div class="col-xl-6">
-									<div class="form-group">
-										<label class="col-form-label">From:</label>
-										<input size="16" value="12:00" class="form-control datetimepicker2">
-									</div>
-								</div>
-								<div class="col-xl-6">
-									<div class="form-group">
-										<label class="col-form-label">To:</label>
-										<input size="16" type="time" value="12:00" class="form-control">
-									</div>
-								</div>
-								<div class="col-xl-12">
-									<div class="form-group">
-										<label  class="col-form-label">Address :</label>
-										<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-									</div>
-								</div>
-								<div class="col-xl-6">
-									<div class="form-group">
-										<label  class="col-form-label">Mobile No:</label>
-										<input type="text" class="form-control" id="moblie1" placeholder="Mobile">
-									</div>
-								</div>
-								<div class="col-xl-6">
-									<div class="form-group">
-										<label class="col-form-label">Email Id:</label>
-										<input type="email" class="form-control" id="email1" placeholder="Email">
-									</div>
-								</div>
-								<div class="col-xl-6">
-									<div class="form-group">
-										<label class="col-form-label">Consulting Doctor:</label>
-										<select class="form-control">
-											<option>Dr.HANI B BARADI</option>
-											<option>Dr.NAJJIA N MAHMOUD</option>
-											<option>Dr. SANKAR NAIDU ADUSUMILLI</option>
-										</select>
-									</div>
-								</div>
-								<div class="col-xl-6">
-									<div class="form-group">
-										<label  class="col-form-label">Injury/Condition:</label>
-										<input type="text" class="form-control" id="fever" placeholder="fever">
-									</div>
-								</div>
-								<div class="col-xl-12">
-									<div class="form-group">
-										<label  class="col-form-label">Note:</label>
-										<textarea class="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
-									</div>
-								</div>
-							</div>
-						</form>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Send message</button>
-					</div>
-				</div>
-			</div>
-		</div>
-        <!--**********************************
-            Content body end
-        ***********************************-->
-
-       
-
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Book Appointment</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="form-group">
+                                        <label class="col-form-label">Title:</label>
+                                        <select class="form-control">
+                                            <option>Miss</option>
+                                            <option>Mr.</option>
+                                            <option>Mrs.</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label">Name:</label>
+                                        <input type="text" class="form-control" id="name1" placeholder="Name">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label">Last Name:</label>
+                                        <input type="text" class="form-control" id="name2" placeholder="Last Name">
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <div class="form-group">
+                                        <label class="col-form-label">Date Of Appointment:</label>
+                                        <input size="16" type="date" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label">From:</label>
+                                        <input size="16" value="12:00" class="form-control datetimepicker2">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label">To:</label>
+                                        <input size="16" type="time" value="12:00" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <div class="form-group">
+                                        <label class="col-form-label">Address :</label>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label">Mobile No:</label>
+                                        <input type="text" class="form-control" id="moblie1" placeholder="Mobile">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label">Email Id:</label>
+                                        <input type="email" class="form-control" id="email1" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label">Consulting Doctor:</label>
+                                        <select class="form-control">
+                                            <option>Dr.HANI B BARADI</option>
+                                            <option>Dr.NAJJIA N MAHMOUD</option>
+                                            <option>Dr. SANKAR NAIDU ADUSUMILLI</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label">Injury/Condition:</label>
+                                        <input type="text" class="form-control" id="fever" placeholder="fever">
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <div class="form-group">
+                                        <label class="col-form-label">Note:</label>
+                                        <textarea class="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Send message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <!--**********************************
-        Scripts
-    ***********************************-->
-    <!-- Required vendors -->
-	
-	<!-- Datatable -->
-	<!-- <script src="js/demo.js"></script>
-    <script src="js/styleSwitcher.js"></script> -->
-	
-	<script>
-		// script.js
-		$(document).ready(function() {
-			// Initially, the user is not following
-			let isFollowing = false;
-
-			// Function to toggle the button text and class
-			function toggleFollowButton() {
-				if (isFollowing) {
-					$("#follow-button").removeClass("following") .css({'background-color':'#36c95f', 'border-color': '#36c95f'}).text("Follow");
-				} else {
-					$("#follow-button").addClass("following").css({'background-color':'#369dc9', 'border-color': '#369dc9'}).text("Following");
-				}
-				isFollowing = !isFollowing;
-			}
-
-			// Handle button click event
-			$("#follow-button").on("click", function() {
-				toggleFollowButton();
-			});
-		});
-	</script>
-	
 </body>
-
-
 <a href="{% url 'BINA_Q_users:logout_confirmation' %}">Logout</a>
 <a href="{% url 'BINA_Q_users:dashboard_update' %}">Edit Profile</a>
 {% endblock %}

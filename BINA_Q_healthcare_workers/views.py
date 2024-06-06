@@ -12,6 +12,7 @@ from django.urls import reverse
 from django.conf import settings
 from .forms import ProfessionalIdentifierForm
 from .models import HealthcareWorker
+from BINA_Q_notes.models import Note
 from BINA_Q_users.models import User
 
 
@@ -246,10 +247,15 @@ def dashboard_view(request):
                 organisation_details = entry
                 break
 
+    authored_notes = Note.objects.filter(author=user)
+    tagged_notes = Note.objects.filter(tags=user)
+
     context = {
         "user": user,
         "healthcare_worker": healthcare_worker,
         "organisation_details": organisation_details,
+        "authored_notes": authored_notes,
+        "tagged_notes": tagged_notes,
     }
 
     return render(request, "dashboard/dashboard.html", context)
