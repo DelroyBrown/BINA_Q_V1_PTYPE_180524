@@ -1,3 +1,4 @@
+# BINA_Q_users/models.py
 from django.db import models
 import random
 import string

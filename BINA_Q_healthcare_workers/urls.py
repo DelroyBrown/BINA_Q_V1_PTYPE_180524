@@ -1,3 +1,4 @@
+# BINA_Q_healthcare_workers/urls.py
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
@@ -14,5 +15,5 @@ urlpatterns = [
         "register/complete/", views.complete_registration, name="complete_registration"
     ),
     path("register/success/", views.registration_success, name="registration_success"),
-    path('dashboard/', views.dashboard_view, name='dashboard'),
+    path("dashboard/", views.dashboard_view, name="dashboard"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

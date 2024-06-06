@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Organisation Members</h2>
+<ul>
+    {% for member in organisation_members %}
+    <li>
+        {{ member.user.first_name }} {{ member.user.last_name }} - {{ member.specialization }}
+        <br>Email: {{ member.user.email }}
+        <br>License Number: {{ member.license_number }}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

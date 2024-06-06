@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>{% if view.object %}Edit{% else %}Create{% endif %} Stock Item</h2>
+  <form method="post">
+    {% csrf_token %}
+    <div>
+      <label for="{{ form.name.id_for_label }}">Name:</label>
+      {{ form.name }}
+    </div>
+    <div>
+      <label for="{{ form.quantity.id_for_label }}">Quantity:</label>
+      {{ form.quantity }}
+    </div>
+    <div>
+      <label for="{{ form.expiration_date.id_for_label }}">Expiration Date:</label>
+      {{ form.expiration_date }}
+    </div>
+    <div>
+      <label for="{{ form.pharmacy.id_for_label }}">Pharmacy:</label>
+      {{ form.pharmacy }}
+    </div>
+    <button type="submit">Save</button>
+  </form>
+{% endblock %}

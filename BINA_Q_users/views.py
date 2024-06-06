@@ -1,3 +1,4 @@
+# BINA_Q_users/views.py
 import json
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash

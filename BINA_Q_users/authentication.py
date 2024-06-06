@@ -1,3 +1,4 @@
+# BINA_Q_users/authentication.py
 from django.contrib.auth.backends import BaseBackend
 from BINA_Q_users.models import User
 

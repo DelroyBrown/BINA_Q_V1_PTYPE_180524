@@ -1,3 +1,4 @@
+# BINA_Q_healthcare_workers/views.py
 import json
 import random
 import string
@@ -252,3 +253,5 @@ def dashboard_view(request):
     }
 
     return render(request, "dashboard/dashboard.html", context)
+
+
