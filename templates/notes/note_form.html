@@ -1,15 +1,102 @@
 <!-- notes/note_form.html -->
-{% extends 'base.html' %}
+{% extends 'dashboard_base.html' %}
 {% load static %}
 
 {% block content %}
-<div class="container">
-    <h1>{% if form.instance.pk %}Edit Note{% else %}Add Note{% endif %}</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">{% if form.instance.pk %}Update{% else %}Add{% endif %} Note</button>
-    </form>
-    <a href="{% url 'BINA_Q_notes:note_list' %}" class="btn btn-secondary">Cancel</a>
+<script src="{% static 'dashboard/js/ckeditor.js' %}"></script>
+ <!-- NAV HEADER -->
+ {% include 'global_includes/nav_header.html' %}
+ <!-- CHAT BOX -->
+ {% include 'global_includes/chat.html' %}
+ <!-- MAIN HEADER -->
+ {% include 'global_includes/header.html' %}
+ <!-- SIDEBAR -->
+ {% include 'global_includes/sidebar.html' %}
+<div class="content-body">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12 card p-5">
+            <h1>{% if form.instance.pk %}Edit Note{% else %}Add Note{% endif %}</h1>
+            <form method="post">
+                {% csrf_token %}
+    
+                <div class="form-group">
+                    <label for="id_title">Title:</label>
+                    <input type="text" class="form-control" id="id_title" name="title" value="{{ form.title.value|default_if_none:'' }}">
+                    {% if form.title.errors %}
+                        <div class="text-danger">
+                            {% for error in form.title.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+    
+                <div class="form-group">
+                    <label for="id_content">Content:</label>
+                    <textarea class="form-control" id="id_content" name="content">{{ form.content.value|default_if_none:'' }}</textarea>
+                    {% if form.content.errors %}
+                        <div class="text-danger">
+                            {% for error in form.content.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+    
+                <div class="form-group">
+                    <label for="id_importance">Importance:</label>
+                    <select class="form-control" id="id_importance" name="importance">
+                        {% for value, display in form.fields.importance.choices %}
+                            <option value="{{ value }}" {% if value == form.importance.value %}selected{% endif %}>{{ display }}</option>
+                        {% endfor %}
+                    </select>
+                    {% if form.importance.errors %}
+                        <div class="text-danger">
+                            {% for error in form.importance.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+    
+                <div class="form-group">
+                    <label for="id_reminder">Reminder:</label>
+                    <input type="datetime-local" class="form-control" id="id_reminder" name="reminder" value="{{ form.reminder.value|default_if_none:'' }}">
+                    {% if form.reminder.errors %}
+                        <div class="text-danger">
+                            {% for error in form.reminder.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+    
+                <div class="form-group">
+                    <label for="id_tags">Tags:</label>
+                    <select multiple class="form-control" id="id_tags" name="tags">
+                        {% for tag in form.fields.tags.queryset %}
+                            <option value="{{ tag.id }}" {% if tag.id in form.tags.value %}selected{% endif %}>{{ tag.first_name }} {{ tag.last_name }}</option>
+                        {% endfor %}
+                    </select>
+                    {% if form.tags.errors %}
+                        <div class="text-danger">
+                            {% for error in form.tags.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+    
+                <button type="submit" class="btn btn-primary">
+                    {% if form.instance.pk %}Update{% else %}Add{% endif %} Note
+                </button>
+                <a href="{% url 'BINA_Q_notes:note_list' %}" class="btn">Cancel</a>
+            </form>
+           </div>
+      
+      </div>
+    </div>
 </div>
+
 {% endblock %}
