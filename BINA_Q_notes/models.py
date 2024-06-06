@@ -18,7 +18,7 @@ class Note(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     reminder = models.DateTimeField(null=True, blank=True)
     tags = models.ManyToManyField(
-        settings.AUTH_USER_MODEL, blank=True, null=True, related_name="tagged_notes"
+        settings.AUTH_USER_MODEL, blank=True, related_name="tagged_notes"
     )
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL, related_name="notes", on_delete=models.CASCADE

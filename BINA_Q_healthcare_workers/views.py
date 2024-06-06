@@ -3,7 +3,9 @@ import json
 import random
 import string
 from django.db import IntegrityError
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.decorators import login_required
 from django import forms
@@ -177,9 +179,6 @@ def complete_registration(request):
         )
         user.save()
 
-        # Add a debugging statement to ensure the user is saved
-        print(f"User created with ID: {user.id}")
-
         try:
             # Create the Healthcare Worker record
             healthcare_worker = HealthcareWorker(
@@ -192,17 +191,27 @@ def complete_registration(request):
             )
             healthcare_worker.save()
 
-            # Add a debugging statement to ensure the healthcare worker is saved
-            print(f"Healthcare worker created with ID: {healthcare_worker.id}")
+            # Prepare the email content
+            subject = "Your BINA-Q Registration"
+            from_email = settings.DEFAULT_FROM_EMAIL
+            to_email = [email]
 
-            # Send the email to the user
-            send_mail(
-                "Your BINA-Q Registration",
-                f"Hello {confirmed_data['first_name']}, \n\nYour BINA-Q ID is {bina_q_id}.\nYour temporary password is {temp_password}. Please log in and change your password.\n\nThank you!",
-                settings.DEFAULT_FROM_EMAIL,
-                [email],
-                fail_silently=False,
+            html_content = render_to_string(
+                "email/email.html",
+                {
+                    "first_name": confirmed_data["first_name"],
+                    "bina_q_id": bina_q_id,
+                    "temp_password": temp_password,
+                },
             )
+            text_content = strip_tags(html_content)
+
+            # Create the email message
+            email_msg = EmailMultiAlternatives(
+                subject, text_content, from_email, to_email
+            )
+            email_msg.attach_alternative(html_content, "text/html")
+            email_msg.send()
 
             return redirect("BINA_Q_healthcare_workers:registration_success")
 
@@ -211,7 +220,7 @@ def complete_registration(request):
             if "UNIQUE constraint" in str(e):
                 return render(
                     request,
-                    "registration/commons/error.html",
+                    "email/error.html",
                     {
                         "message": f"A healthcare worker with the identifier {confirmed_data['identifier']} already exists."
                     },
@@ -259,5 +268,3 @@ def dashboard_view(request):
     }
 
     return render(request, "dashboard/dashboard.html", context)
-
-
