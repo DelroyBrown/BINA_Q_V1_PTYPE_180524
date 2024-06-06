@@ -30,11 +30,18 @@
                     <li><a href="{% url 'BINA_Q_organisations:organisation_members' %}">Members</a></li>
                 </ul>
             </li>
-            <li><a href="{% url 'BINA_Q_notes:note_create' %}" class="ai-icon" aria-expanded="false">
-                    <i class="flaticon-381-menu"></i>
-                    <span class="nav-text">Notes</span>
+            <li>
+                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                    <i class="flaticon-381-networking"></i>
+                    <span class="nav-text">Notes/Reminders</span>
                 </a>
+                <ul aria-expanded="false">
+                    <li><a href="{% url 'BINA_Q_notes:note_create' %}">Create</a></li>
+                    <li><a href="{% url 'BINA_Q_notes:note_list' %}">View Notes</a></li>
+                    <li><a href="javascript:void()">Tagged Notes</a></li>
+                </ul>
             </li>
+         
          
         </ul>
 <hr>

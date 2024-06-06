@@ -7,7 +7,10 @@ from .forms import NoteForm
 
 @login_required
 def note_list(request):
-    notes = Note.objects.filter(author=request.user)
+    notes = Note.objects.filter(author=request.user) | Note.objects.filter(
+        tags=request.user
+    )
+    notes = notes.distinct().order_by('-created_at')
     return render(request, "notes/note_list.html", {"notes": notes})
 
 
