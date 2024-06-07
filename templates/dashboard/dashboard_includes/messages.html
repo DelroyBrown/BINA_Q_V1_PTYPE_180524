@@ -1,9 +1,15 @@
 {% load static %}
 <div class="col-xl-6 col-xxl-6 col-lg-6">
 
-    <div class="card border-0 pb-0">
-        <div class="card-header border-0 pb-0">
-            <h4 class="card-title">Notes <a class="mx-1 btn btn-outline-primary btn-xxs" href="{% url 'BINA_Q_notes:note_create' %}">Add Note</a></h4>
+    <div class="card border-0 p-0">
+        <div class="card-header border-0 p-0">
+            <h4 class="card-title">Notes
+                <a class="mx-1 btn btn-outline-primary btn-xxs"
+                href="{% url 'BINA_Q_notes:note_create' %}">
+                    Add Note
+                </a>
+            </h4>
+            <hr>
         </div>
         <div class="card-body p-0">
             <div id="DZ_W_Todo3" class="widget-media dz-scroll my-4 px-4 height200">
@@ -34,7 +40,7 @@
                             </div>
                             <div class="media-body">
                                 <h5 class="mb-1">
-                                    {{ note.title }} 
+                                    {{ note.title }}
                                     <small class="text-muted">
                                         {{ note.created_at|date:"D,d M Y H:i" }}
                                     </small>
@@ -53,7 +59,7 @@
                         <a class="btn btn-primary btn-xxs" href="{% url 'BINA_Q_notes:note_create' %}">Add Note</a>
                     </li>
                     {% endfor %}
-                
+
                 </ul>
             </div>
         </div>
