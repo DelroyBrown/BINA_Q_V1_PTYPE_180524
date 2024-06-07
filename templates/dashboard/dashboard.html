@@ -20,58 +20,26 @@
                                     {% include 'dashboard/dashboard_includes/dashboard_worker_info.html' %}
 
                                     <!-- HEALTHCARE WORKER NOTES -->
-                                    <div class="mt-5">
-                                        <h3>Authored Notes</h3>
-                                        <ul class="list-group mt-3">
-                                            {% for note in authored_notes %}
-                                                <li class="list-group-item">
-                                                    <a href="{% url 'BINA_Q_notes:note_detail' note.id %}">{{ note.title }}</a>
-                                                    <span class="badge bg-secondary">{{ note.get_importance_display }}</span>
-                                                    <span class="float-end">
-                                                        <a href="{% url 'BINA_Q_notes:note_edit' note.id %}" class="btn btn-sm btn-warning">Edit</a>
-                                                        <a href="{% url 'BINA_Q_notes:note_delete' note.id %}" class="btn btn-sm btn-danger">Delete</a>
-                                                    </span>
-                                                </li>
-                                            {% endfor %}
-                                        </ul>
-                                    </div>
+                                    {% include 'dashboard/dashboard_includes/messages.html' %}
 
-                                    <div class="mt-5">
-                                        <h3>Notes You're Tagged In</h3>
-                                        <ul class="list-group mt-3">
-                                            {% for note in tagged_notes %}
-                                                <li class="list-group-item">
-                                                    <a href="{% url 'BINA_Q_notes:note_detail' note.id %}">{{ note.title }}</a>
-                                                    <span class="badge bg-secondary">{{ note.get_importance_display }}</span>
-                                                    <span class="float-end">
-                                                        <a href="{% url 'BINA_Q_notes:note_detail' note.id %}" class="btn btn-sm btn-primary">View</a>
-                                                    </span>
-                                                </li>
-                                            {% endfor %}
-                                        </ul>
-                                    </div>
+                       
 
                                     <!-- UPCOMING APPOINTMENTS -->
                                     <div class="mt-5">
                                         <div class="staff-info row">
-                                            <div class="col-xl-4 col-xxl-4 col-lg-4">
+                                            <div class="col-xl-6 col-xxl-6 col-lg-6">
                                                 <div class="mt-5">
                                                     {% include 'dashboard/dashboard_includes/dashboard_urgent_cases.html' %}
                                                 </div>
                                                 <hr>
                                             </div>
-                                            <div class="col-xl-4 col-xxl-4 col-lg-4">
+                                            <div class="col-xl-6 col-xxl-6 col-lg-6">
                                                 <div class="mt-5">
                                                     {% include 'dashboard/dashboard_includes/dashboard_urgent_cases.html' %}
                                                 </div>
                                                 <hr>
                                             </div>
-                                            <div class="col-xl-4 col-xxl-4 col-lg-4">
-                                                <div class="mt-5">
-                                                    {% include 'dashboard/dashboard_includes/dashboard_notification.html' %}
-                                                </div>
-                                                <hr>
-                                            </div>
+                                      
                                         </div>
                                     </div>
                                 </div>

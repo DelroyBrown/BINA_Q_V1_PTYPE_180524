@@ -1,146 +1,55 @@
-<div class="col-xl-4 col-xxl-6 col-lg-6">
+{% load static %}
+<div class="col-xl-6 col-xxl-6 col-lg-6">
 
     <div class="card border-0 pb-0">
         <div class="card-header border-0 pb-0">
             <h4 class="card-title">Messages</h4>
         </div>
-        <div class="card-body p-0"> 
+        <div class="card-body p-0">
             <div id="DZ_W_Todo3" class="widget-media dz-scroll my-4 px-4 height370">
                 <ul class="timeline">
-                 
+                    {% for note in tagged_notes %}
                     <li>
                         <div class="timeline-panel">
                             <div class="media me-2 media-info">
-                                JT
+                                <img width="30px" src="{% static 'images/bina_logo.png' %}">
                             </div>
                             <div class="media-body">
-                                <h5 class="mb-1">Jacob Tucker <small class="text-muted">29 July 2020</small></h5>
-                                <p class="mb-1">I shared this on my fb wall a few months back..</p>
-                                <a href="javascript:void(0);" class="btn btn-primary btn-xxs shadow">Reply</a>
-                                <a href="javascript:void(0);" class="btn btn-outline-danger btn-xxs">Delete</a>
+                                <h5 class="mb-1">{{ note.title }}</h5>
+                                <p class="mb-1">{{ note.content }}</p>
+                                <a href="{% url 'BINA_Q_notes:note_edit' note.id %}"
+                                    class="btn btn-xxs btn-warning">Edit</a>
+                                <a href="{% url 'BINA_Q_notes:note_delete' note.id %}"
+                                    class="btn btn-xxs btn-danger">Delete</a>
                             </div>
-                            <div class="dropdown">
-                                <button type="button" class="btn btn-info light sharp" data-bs-toggle="dropdown">
-                                    <svg width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <a class="dropdown-item" href="javascript:void(0);">Edit</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                </div>
-                            </div>
+
                         </div>
                     </li>
+                    {% endfor %}
+                    {% for note in authored_notes %}
                     <li>
                         <div class="timeline-panel">
                             <div class="media me-2 media-info">
-                                JT
+                                <img width="30px" src="{% static 'images/bina_logo.png' %}">
                             </div>
                             <div class="media-body">
-                                <h5 class="mb-1">Jacob Tucker <small class="text-muted">29 July 2020</small></h5>
-                                <p class="mb-1">I shared this on my fb wall a few months back..</p>
-                                <a href="javascript:void(0);" class="btn btn-primary btn-xxs shadow">Reply</a>
-                                <a href="javascript:void(0);" class="btn btn-outline-danger btn-xxs">Delete</a>
+                                <h5 class="mb-1">
+                                    {{ note.title }} 
+                                    <small class="text-muted">
+                                        {{ note.created_at|date:"D,d M Y H:i" }}
+                                    </small>
+                                </h5>
+                                <p class="mb-1">{{ note.content }}</p>
+                                <a href="{% url 'BINA_Q_notes:note_edit' note.id %}"
+                                    class="btn btn-xxs btn-warning">Edit</a>
+                                <a href="{% url 'BINA_Q_notes:note_delete' note.id %}"
+                                    class="btn btn-xxs btn-danger">Delete</a>
                             </div>
-                            <div class="dropdown">
-                                <button type="button" class="btn btn-info light sharp" data-bs-toggle="dropdown">
-                                    <svg width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <a class="dropdown-item" href="javascript:void(0);">Edit</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                </div>
-                            </div>
+
                         </div>
                     </li>
-                    <li>
-                        <div class="timeline-panel">
-                            <div class="media me-2 media-info">
-                                JT
-                            </div>
-                            <div class="media-body">
-                                <h5 class="mb-1">Jacob Tucker <small class="text-muted">29 July 2020</small></h5>
-                                <p class="mb-1">I shared this on my fb wall a few months back..</p>
-                                <a href="javascript:void(0);" class="btn btn-primary btn-xxs shadow">Reply</a>
-                                <a href="javascript:void(0);" class="btn btn-outline-danger btn-xxs">Delete</a>
-                            </div>
-                            <div class="dropdown">
-                                <button type="button" class="btn btn-info light sharp" data-bs-toggle="dropdown">
-                                    <svg width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <a class="dropdown-item" href="javascript:void(0);">Edit</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="timeline-panel">
-                            <div class="media me-2 media-info">
-                                JT
-                            </div>
-                            <div class="media-body">
-                                <h5 class="mb-1">Jacob Tucker <small class="text-muted">29 July 2020</small></h5>
-                                <p class="mb-1">I shared this on my fb wall a few months back..</p>
-                                <a href="javascript:void(0);" class="btn btn-primary btn-xxs shadow">Reply</a>
-                                <a href="javascript:void(0);" class="btn btn-outline-danger btn-xxs">Delete</a>
-                            </div>
-                            <div class="dropdown">
-                                <button type="button" class="btn btn-info light sharp" data-bs-toggle="dropdown">
-                                    <svg width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <a class="dropdown-item" href="javascript:void(0);">Edit</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="timeline-panel">
-                            <div class="media me-2 media-info">
-                                JT
-                            </div>
-                            <div class="media-body">
-                                <h5 class="mb-1">Jacob Tucker <small class="text-muted">29 July 2020</small></h5>
-                                <p class="mb-1">I shared this on my fb wall a few months back..</p>
-                                <a href="javascript:void(0);" class="btn btn-primary btn-xxs shadow">Reply</a>
-                                <a href="javascript:void(0);" class="btn btn-outline-danger btn-xxs">Delete</a>
-                            </div>
-                            <div class="dropdown">
-                                <button type="button" class="btn btn-info light sharp" data-bs-toggle="dropdown">
-                                    <svg width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <a class="dropdown-item" href="javascript:void(0);">Edit</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="timeline-panel">
-                            <div class="media me-2 media-info">
-                                JT
-                            </div>
-                            <div class="media-body">
-                                <h5 class="mb-1">Jacob Tucker <small class="text-muted">29 July 2020</small></h5>
-                                <p class="mb-1">I shared this on my fb wall a few months back..</p>
-                                <a href="javascript:void(0);" class="btn btn-primary btn-xxs shadow">Reply</a>
-                                <a href="javascript:void(0);" class="btn btn-outline-danger btn-xxs">Delete</a>
-                            </div>
-                            <div class="dropdown">
-                                <button type="button" class="btn btn-info light sharp" data-bs-toggle="dropdown">
-                                    <svg width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <a class="dropdown-item" href="javascript:void(0);">Edit</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-              
+                    {% endfor %}
+                
                 </ul>
             </div>
         </div>
