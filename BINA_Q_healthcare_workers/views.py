@@ -169,7 +169,7 @@ def complete_registration(request):
 
         temp_password = generate_temp_password()
 
-        # Create the User record
+        # User record
         user = User(
             email=email,
             password=make_password(temp_password),
@@ -180,7 +180,7 @@ def complete_registration(request):
         user.save()
 
         try:
-            # Create the Healthcare Worker record
+            # Healthcare Worker record
             healthcare_worker = HealthcareWorker(
                 user=user,
                 identifier=confirmed_data["identifier"],
@@ -191,7 +191,7 @@ def complete_registration(request):
             )
             healthcare_worker.save()
 
-            # Prepare the email content
+            # Prepare email content
             subject = "Your BINA-Q Registration"
             from_email = settings.DEFAULT_FROM_EMAIL
             to_email = [email]
@@ -206,7 +206,7 @@ def complete_registration(request):
             )
             text_content = strip_tags(html_content)
 
-            # Create the email message
+            # email message
             email_msg = EmailMultiAlternatives(
                 subject, text_content, from_email, to_email
             )
