@@ -57,3 +57,12 @@
     - Displayed authored and tagged notes on the user's dashboard.
     - Ensured notes are listed in the order of creation, with the newest notes appearing first.
     - Manually rendered form fields in the note creation and editing templates for better control over the UI.
+
+13. **API Endpoints Creation**:
+    - Created API endpoints for healthcare workers to allow search and retrieval based on various parameters.
+    - Implemented GET endpoints with query parameters for filtering healthcare workers by first name, last name, specialization, organization affiliation, and ODS code.
+    - Documented the endpoints and provided examples for usage.
+
+14. **Deployment**:
+    - Deployed the application to Heroku and AWS to make the API endpoints accessible for the Flutter side.
+    - Ensured the app is configured for production, with proper settings for security, database connections, and static file handling.

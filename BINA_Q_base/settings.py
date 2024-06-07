@@ -13,7 +13,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", "")
 
 DEBUG = os.getenv("DEBUG")
 
-ALLOWED_HOSTS = ["bina-q-v1-e5ba4dfc31be.herokuapp.com", "localhost"]
+ALLOWED_HOSTS = ["bina-q-v1-e5ba4dfc31be.herokuapp.com", "127.0.0.1"]
 
 
 INSTALLED_APPS = [
