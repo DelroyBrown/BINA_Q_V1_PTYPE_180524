@@ -3,10 +3,10 @@
 
     <div class="card border-0 pb-0">
         <div class="card-header border-0 pb-0">
-            <h4 class="card-title">Messages</h4>
+            <h4 class="card-title">Notes <a class="mx-1 btn btn-outline-primary btn-xxs" href="{% url 'BINA_Q_notes:note_create' %}">Add Note</a></h4>
         </div>
         <div class="card-body p-0">
-            <div id="DZ_W_Todo3" class="widget-media dz-scroll my-4 px-4 height370">
+            <div id="DZ_W_Todo3" class="widget-media dz-scroll my-4 px-4 height200">
                 <ul class="timeline">
                     {% for note in tagged_notes %}
                     <li>
