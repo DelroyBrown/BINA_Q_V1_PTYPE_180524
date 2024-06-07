@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "rest_framework",
     "BINA_Q_users",
     "BINA_Q_healthcare_workers",
     "BINA_Q_pharmacies",
@@ -29,6 +30,7 @@ INSTALLED_APPS = [
     "BINA_Q_roles",
     "BINA_Q_common",
     "BINA_Q_notes",
+    "BINA_Q_search_api",
 ]
 
 MIDDLEWARE = [
@@ -120,4 +122,3 @@ AUTHENTICATION_BACKENDS = [
     "BINA_Q_users.authentication.BinaQIDBackend",
     "django.contrib.auth.backends.ModelBackend",
 ]
-

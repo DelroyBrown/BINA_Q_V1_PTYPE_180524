@@ -13,4 +13,5 @@ urlpatterns = [
     path("roles/", include("BINA_Q_roles.urls")),
     path("users/", include("BINA_Q_users.urls")),
     path("notes/", include("BINA_Q_notes.urls")),
+    path("search/", include("BINA_Q_search_api.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
