@@ -3,11 +3,10 @@
 {% load static %}
 
 {% block content %}
-<body>
+{% include 'global_includes/sidebar.html' %}
+{% include 'global_includes/nav_header.html' %}
+{% include 'global_includes/header.html' %}
     <div id="main-wrapper">
-        {% include 'global_includes/sidebar.html' %}
-        {% include 'global_includes/nav_header.html' %}
-        {% include 'global_includes/header.html' %}
 
         <div class="content-body">
             <div class="container-fluid">
@@ -150,7 +149,6 @@
             </div>
         </div>
     </div>
-</body>
 <a href="{% url 'BINA_Q_users:logout_confirmation' %}">Logout</a>
 <a href="{% url 'BINA_Q_users:dashboard_update' %}">Edit Profile</a>
 {% endblock %}
