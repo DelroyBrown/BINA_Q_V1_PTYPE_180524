@@ -48,6 +48,10 @@
 
                         </div>
                     </li>
+                    {% empty %}
+                    <li>
+                        <a class="btn btn-primary btn-xxs" href="{% url 'BINA_Q_notes:note_create' %}">Add Note</a>
+                    </li>
                     {% endfor %}
                 
                 </ul>
