@@ -1,5 +1,6 @@
 # BINA_Q_base/settings.py
 import os
+import dj_database_url
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -70,6 +71,7 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+
 
 
 AUTH_PASSWORD_VALIDATORS = [
