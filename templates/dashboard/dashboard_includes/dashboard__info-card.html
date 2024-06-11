@@ -1,22 +1,14 @@
 {% load static %}
 
-
-
-<div class="profile-info-box col-sm-12 col-xl-6 d-md-flex justify-content-center justify-content-sm-start">
+<div class="col-xl-6">
     <div class="profile">
         <div class="staff">
-            {% if request.user.healthcare_worker.organisation.organisation_logo %}
-            <img src="{{ request.user.healthcare_worker.organisation.organisation_logo.url }}" alt="Profile Image">
-            {% else %}
-            <!-- THIS IS THE CURRENT PROFILE IMAGE -->
+            <!-- PROFILE PICTURE -->
             <div style="width: 250px; height: 250px;"
                 class="profile-main-image d-md-flex justify-content-md-center align-items-md-center">
-                <svg xmlns:xlink="http://www.w3.org/1999/xlink"
-                    preserveAspectRatio="xMidYMid meet"
-                    data-bbox="20.303 25.565 159.393 148.871"
-                    viewBox="20.303 25.565 159.393 148.871" height="150" width="150"
-                    xmlns="http://www.w3.org/2000/svg" data-type="color" role="img"
-                    aria-label="Homepage">
+                <svg xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet"
+                    data-bbox="20.303 25.565 159.393 148.871" viewBox="20.303 25.565 159.393 148.871" height="150"
+                    width="150" xmlns="http://www.w3.org/2000/svg" data-type="color" role="img" aria-label="Homepage">
                     <defs>
                         <style>
                             #comp-kk2o699z svg [data-color="1"] {
@@ -37,7 +29,6 @@
                     </g>
                 </svg>
             </div>
-            {% endif %}
         </div>
         <div class="staff-2-info">
             <div class="staff-3-info">

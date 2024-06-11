@@ -1,0 +1,66 @@
+<!--**********************************
+            Sidebar start
+        ***********************************-->
+<div class="deznav">
+    <div class="deznav-scroll">
+        <ul class="metismenu" id="menu">
+            <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                    <i class="flaticon-381-networking"></i>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="{% url 'BINA_Q_healthcare_workers:dashboard' %}">Profile</a></li>
+                    <li><a href="javascript:void()">Important Link</a></li>
+                </ul>
+            </li>
+            <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                    <i class="flaticon-381-heart"></i>
+                    <span class="nav-text">Patients</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="javascript:void()">Patient List</a></li>
+                    <li><a href="javascript:void()">Patient Docs</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                    <i class="flaticon-381-home"></i>
+                    <span class="nav-text">Organisation</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="{% url 'BINA_Q_organisations:organisation_members' %}">Co-Workers</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                    <i class="flaticon-381-notebook"></i>
+                    <span class="nav-text">Notes/Reminders</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li>
+                        <a href="{% url 'BINA_Q_notes:note_create' %}">Create Note</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'BINA_Q_notes:note_list' %}">All Notes</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void()">Tagged Notes</a>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="javascript:void()" class="ai-icon" aria-expanded="false">
+                    <i class="flaticon-381-menu"></i>
+                    <span class="nav-text">thing</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="plus-box">
+        </div>
+        <div class="copyright">
+        </div>
+    </div>
+</div>
+<!--**********************************
+            Sidebar end
+        ***********************************-->

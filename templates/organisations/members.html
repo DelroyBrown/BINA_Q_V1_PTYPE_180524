@@ -3,41 +3,18 @@
 
 
 {% block content %}
+{% include 'dashboard/dashboard_includes/css_links.html' %}
+{% include 'dashboard/dashboard_includes/javascript_links.html' %}
 
-
-
-<!--*******************
-        Preloader start
-    ********************-->
-<div id="preloader">
-    <div class="sk-three-bounce">
-        <div class="sk-child sk-bounce1"></div>
-        <div class="sk-child sk-bounce2"></div>
-        <div class="sk-child sk-bounce3"></div>
-    </div>
-</div>
-<!--*******************
-        Preloader end
-    ********************-->
-
-<!--**********************************
-        Main wrapper start
-    ***********************************-->
 <div id="main-wrapper">
-
     <!-- NAV HEADER -->
-    {% include 'global_includes/nav_header.html' %}
+    {% include 'dashboard/dashboard_includes/dashboard__nav-header.html' %}
     <!-- CHAT BOX -->
-    {% include 'global_includes/chat.html' %}
+    {% include 'dashboard/dashboard_includes/dashboard__chat-box.html' %}
     <!-- MAIN HEADER -->
-    {% include 'global_includes/header.html' %}
+    {% include 'dashboard/dashboard_includes/dashboard__header.html' %}
     <!-- SIDEBAR -->
-    {% include 'global_includes/sidebar.html' %}
-
-
-    <!--**********************************
-            Content body start
-        ***********************************-->
+    {% include 'dashboard/dashboard_includes/dashboard__sidebar.html' %}
     <div class="content-body">
         <!-- row -->
         <div class="container-fluid">
@@ -59,7 +36,7 @@
                                 aria-describedby="example5_info">
                                 <thead>
                                     <tr>
-                                  
+
                                         <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1"
                                             colspan="1" aria-label="ID: activate to sort column ascending"
                                             style="width: 106.078px;">Name</th>
@@ -75,7 +52,7 @@
                                         <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1"
                                             colspan="1" aria-label="Schedule: activate to sort column ascending"
                                             style="width: 185.156px;">Schedule</th>
-                               
+
                                         <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1"
                                             colspan="1" aria-label="Status: activate to sort column ascending"
                                             style="width: 155.781px;">Status</th>
@@ -85,7 +62,7 @@
                                     <!-- ORGANISATION MEMBERS ENTRIES -->
                                     {% for member in organisation_members %}
                                     <tr class="even">
-                                        
+
                                         <td>{{ member.user.first_name }} {{ member.user.last_name }}</td>
                                         <td>{{ member.specialization }}</td>
                                         <td>{{ member.email }}</td>
@@ -96,7 +73,7 @@
                                                 5 Appointments
                                             </a>
                                         </td>
-                                   
+
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <span class="text-danger font-w600">Unavailable</span>
@@ -118,7 +95,8 @@
                                                                 stroke-linejoin="round"></path>
                                                         </svg>
                                                     </div>
-                                                    <div style="z-index: 999;" class="dropdown-menu dropdown-menu-right">
+                                                    <div style="z-index: 999;"
+                                                        class="dropdown-menu dropdown-menu-right">
                                                         <a class="dropdown-item" href="javascript:void(0);">View
                                                             Detail</a>
                                                         <a class="dropdown-item" href="javascript:void(0);">Edit</a>
@@ -129,26 +107,19 @@
                                         </td>
                                     </tr>
                                     {% endfor %}
-                            
-                                  
+
+
                                 </tbody>
                             </table>
-                   
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!--**********************************
-            Content body end
-        ***********************************-->
-
-
 </div>
-<!--**********************************
-        Main wrapper end
-    ***********************************-->
+
 
 <script>
     (function ($) {
