@@ -2,7 +2,7 @@
 <div class="col-xl-6 col-xxl-6 col-lg-6">
 
     <div class="card border-0 p-0">
-        <div class="card-header border-0 p-0">
+        <div class="card-header border-0">
             <h4 class="card-title">Notes
                 <a class="mx-1 btn btn-outline-primary btn-xxs"
                 href="{% url 'BINA_Q_notes:note_create' %}">
@@ -54,10 +54,7 @@
 
                         </div>
                     </li>
-                    {% empty %}
-                    <li>
-                        <a class="btn btn-primary btn-xxs" href="{% url 'BINA_Q_notes:note_create' %}">Add Note</a>
-                    </li>
+               
                     {% endfor %}
 
                 </ul>
