@@ -2,7 +2,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Note
-from .forms import NoteForm
+from .forms import NoteForm, NoteResponseForm
 
 
 @login_required
@@ -10,16 +10,27 @@ def note_list(request):
     notes = Note.objects.filter(author=request.user) | Note.objects.filter(
         tags=request.user
     )
-    notes = notes.distinct().order_by('-created_at')
+    notes = notes.distinct().order_by("-created_at")
     return render(request, "notes/note_list.html", {"notes": notes})
 
 
 @login_required
 def note_detail(request, note_id):
     note = get_object_or_404(Note, id=note_id)
-    if note.author != request.user and request.user not in note.tags.all():
+    responses = note.note_responses.all()
+    if note.author != request.user:
         return render(request, "notes/note_not_allowed.html")
-    return render(request, "notes/note_detail.html", {"note": note})
+    if request.method == "POST":
+        form = NoteResponseForm(request.POST)
+        if form.is_valid():
+            response = form.save(commit=False)
+            response.author = request.user
+            response.note = note
+            response.save()
+            return redirect("BINA_Q_notes:note_detail", note_id=note_id)
+    return render(
+        request, "notes/note_detail.html", {"note": note, "responses": responses}
+    )
 
 
 @login_required
@@ -56,3 +67,19 @@ def note_delete(request, note_id):
         note.delete()
         return redirect("BINA_Q_notes:note_list")
     return render(request, "notes/note_confirm_delete.html", {"note": note})
+
+
+@login_required
+def note_response_create(request, note_id):
+    note = get_object_or_404(Note, id=note_id)
+    if request.method == "POST":
+        form = NoteResponseForm(request.POST)
+        if form.is_valid():
+            response = form.save(commit=False)
+            response.author = request.user
+            response.note = note
+            response.save()
+            return redirect("BINA_Q_notes:note_detail", note_id=note_id)
+    else:
+        form = NoteResponseForm()
+    return render(request, "notes/note_comment_form.html", {"form": form, "note": note})

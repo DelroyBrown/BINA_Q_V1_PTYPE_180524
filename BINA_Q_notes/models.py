@@ -26,3 +26,13 @@ class Note(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class NoteResponse(models.Model):
+    note = models.ForeignKey(Note, on_delete=models.CASCADE, related_name="note_responses")
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    response = models.TextField(max_length=2000)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Response to {self.note.title} by {self.author.get_username()}"

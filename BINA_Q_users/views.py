@@ -1,6 +1,7 @@
 # BINA_Q_users/views.py
 import json
 from django.conf import settings
+from django.http import JsonResponse
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
@@ -55,9 +56,6 @@ def check_temporary_password(request):
     if request.user.is_temporary_password:
         return redirect("BINA_Q_users:password_change")
     return redirect("BINA_Q_healthcare_workers:dashboard")
-
-
-from django.http import JsonResponse
 
 
 @login_required

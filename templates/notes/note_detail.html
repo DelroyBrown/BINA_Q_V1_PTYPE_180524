@@ -3,13 +3,53 @@
 {% load static %}
 
 {% block content %}
+<!-- notes/note_detail.html -->
+
+<!-- Container -->
 <div class="container">
-    <h1>{{ note.title }}</h1>
-    <p>{{ note.content }}</p>
-    <p>Importance: {{ note.get_importance_display }}</p>
-    <p>Reminder: {{ note.reminder }}</p>
-    <p>Tags: {% for tag in note.tags.all %}{{ tag.first_name }} {{ tag.last_name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
-    <a href="{% url 'BINA_Q_notes:note_edit' note.id %}" class="btn btn-warning">Edit</a>
-    <a href="{% url 'BINA_Q_notes:note_list' %}" class="btn btn-secondary">Back to Notes</a>
+    <!-- Note details -->
+    <div class="note-detail">
+        <h1>{{ note.title }}</h1>
+        <p>Created by {{ note.author.username }} on {{ note.created_at }}</p>
+        <p>{{ note.content }}</p>
+
+        <!-- Importance and Reminder -->
+        <p>Importance: {{ note.get_importance_display }}</p>
+        <p>Reminder: {{ note.reminder }}</p>
+
+        <!-- Tags -->
+        <p>Tags:
+            {% for tag in note.tags.all %}
+                <span class="badge badge-secondary">{{ tag.username }}</span>
+            {% empty %}
+                <span class="badge badge-secondary">No tags</span>
+            {% endfor %}
+        </p>
+
+        <!-- Edit and Back to Notes links -->
+        <a href="{% url 'BINA_Q_notes:note_edit' note.id %}" class="btn btn-warning">Edit</a>
+        <a href="{% url 'BINA_Q_notes:note_list' %}" class="btn btn-secondary">Back to Notes</a>
+    </div>
+
+    <!-- Comments -->
+    <div class="comments">
+        <h2>Comments ({{ responses.count }})</h2>
+
+        <!-- Comment list -->
+        <ul>
+            <li>
+                {{ responses }}
+            </li>
+                <li>No comments yet!</li>
+        </ul>
+
+        <!-- Create new comment form -->
+        <h2>Leave a comment</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Comment</button>
+        </form>
+    </div>
 </div>
 {% endblock %}
