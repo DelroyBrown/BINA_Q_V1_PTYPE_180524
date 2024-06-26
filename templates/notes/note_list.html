@@ -18,7 +18,7 @@
         <div class="container-fluid">
             <div class="row">
 
-                {% for note in notes %}
+                {% for note, responses in notes_with_responses %}
                 <div class="col-xl-4 col-lg-12 col-sm-12">
                     <div class="card">
                         <div class="card-header border-0 pb-0">
@@ -27,8 +27,8 @@
                         </div>
                         <div class="card-body pb-0">
                             <p>{{ note.content }}</p>
-                            <ul class="list-group list-group-flush">
-
+                            <hr>
+                            <ul style="padding-left: 15px;" class="list-group list-group-flush">
                                 {% for response in responses %}
                                 <li>
                                     <p>
@@ -36,9 +36,10 @@
                                         {{ response.response }}
                                     </p>
                                     <p>
-                                        <small>Posted on {{ response.created_at }}</small>
+                                        <small>{{ response.created_at }}</small>
                                     </p>
                                 </li>
+                                <hr>
                                 {% empty %}
                                 <li>No comments yet!</li>
                                 {% endfor %}
@@ -60,7 +61,6 @@
                                         <i class="fas fa-edit" style="font-size: 24px; color: #FF6D4C;"></i>
                                     </a>
                                 </div>
-
 
                                 <div class="col-3 pt-3 pb-3">
                                     <a href="{% url 'BINA_Q_notes:note_delete' note.id %}">

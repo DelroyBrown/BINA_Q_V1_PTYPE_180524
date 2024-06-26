@@ -11,7 +11,15 @@ def note_list(request):
         tags=request.user
     )
     notes = notes.distinct().order_by("-created_at")
-    return render(request, "notes/note_list.html", {"notes": notes})
+
+    notes_with_responses = []
+    for note in notes:
+        responses = note.note_responses.all()
+        notes_with_responses.append((note, responses))
+
+    return render(
+        request, "notes/note_list.html", {"notes_with_responses": notes_with_responses}
+    )
 
 
 @login_required
