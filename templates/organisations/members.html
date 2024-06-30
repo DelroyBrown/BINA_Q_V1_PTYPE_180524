@@ -48,7 +48,7 @@
                                             style="width: 150px;">Department</th>
                                         <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1"
                                             colspan="1" aria-label="Specialist: activate to sort column ascending"
-                                            style="width: 150px;">Contact</th>
+                                            style="width: 150px;">BINA-Q ID</th>
                                         <th class="sorting" tabindex="0" aria-controls="example5" rowspan="1"
                                             colspan="1" aria-label="Schedule: activate to sort column ascending"
                                             style="width: 150px;">Schedule</th>
@@ -65,8 +65,8 @@
 
                                         <td>{{ member.user.first_name }} {{ member.user.last_name }}</td>
                                         <td>{{ member.specialization }}</td>
-                                        <td>{{ member.email }}</td>
-                                        <td>{{ member.contact }}</td>
+                                        <td>{{ member.user.email }}</td>
+                                        <td>{{ member.user.bina_q_id }}</td>
                                         <td>
                                             <a href="javascript:void(0);"
                                                 class="btn btn-primary light btn-rounded btn-sm text-nowrap">
