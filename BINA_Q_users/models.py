@@ -48,6 +48,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = "bina_q_id"
     REQUIRED_FIELDS = ["first_name", "last_name", "email"]
 
+    def get_full_name(self):
+        return f"{self.first_name} {self.last_name}"
+
     def save(self, *args, **kwargs):
         if not self.bina_q_id:
             self.bina_q_id = self.generate_bina_q_id()

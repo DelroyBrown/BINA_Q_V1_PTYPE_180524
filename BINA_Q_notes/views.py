@@ -26,8 +26,10 @@ def note_list(request):
 def note_detail(request, note_id):
     note = get_object_or_404(Note, id=note_id)
     responses = note.note_responses.all()
-    if note.author != request.user:
+
+    if request.user != note.author and request.user not in note.tags.all():
         return render(request, "notes/note_not_allowed.html")
+
     if request.method == "POST":
         form = NoteResponseForm(request.POST)
         if form.is_valid():
@@ -36,15 +38,20 @@ def note_detail(request, note_id):
             response.note = note
             response.save()
             return redirect("BINA_Q_notes:note_detail", note_id=note_id)
+    else:
+        form = NoteResponseForm()
+
     return render(
-        request, "notes/note_detail.html", {"note": note, "responses": responses}
+        request,
+        "notes/note_detail.html",
+        {"note": note, "responses": responses, "form": form},
     )
 
 
 @login_required
 def note_create(request):
     if request.method == "POST":
-        form = NoteForm(request.POST)
+        form = NoteForm(request.POST, user=request.user)
         if form.is_valid():
             note = form.save(commit=False)
             note.author = request.user
@@ -52,19 +59,20 @@ def note_create(request):
             form.save_m2m()  # this saves the tags
             return redirect("BINA_Q_notes:note_list")
     else:
-        form = NoteForm()
+        form = NoteForm(user=request.user)
     return render(request, "notes/note_form.html", {"form": form})
 
 
+@login_required
 def note_edit(request, note_id):
     note = get_object_or_404(Note, id=note_id, author=request.user)
     if request.method == "POST":
-        form = NoteForm(request.POST, instance=note)
+        form = NoteForm(request.POST, instance=note, user=request.user)
         if form.is_valid():
             form.save()
             return redirect("BINA_Q_notes:note_list")
     else:
-        form = NoteForm(instance=note)
+        form = NoteForm(instance=note, user=request.user)
     return render(request, "notes/note_form.html", {"form": form})
 
 

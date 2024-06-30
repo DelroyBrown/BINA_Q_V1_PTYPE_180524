@@ -17,7 +17,6 @@
     <div class="content-body">
         <div class="container-fluid">
             <div class="row">
-
                 {% for note, responses in notes_with_responses %}
                 <div class="col-xl-4 col-lg-12 col-sm-12">
                     <div class="card">
@@ -32,7 +31,7 @@
                                 {% for response in responses %}
                                 <li>
                                     <p>
-                                        <strong>{{ response.author }}:</strong><br>
+                                        <strong>{{ response.author.get_full_name }}:</strong><br>
                                         {{ response.response }}
                                     </p>
                                     <p>
@@ -64,23 +63,25 @@
 
                                 <div class="col-3 pt-3 pb-3">
                                     <a href="{% url 'BINA_Q_notes:note_delete' note.id %}">
-                                      <i class="fas fa-trash-alt" style="font-size: 24px; color: #FF6D4C;"></i>
+                                        <i class="fas fa-trash-alt" style="font-size: 24px; color: #FF6D4C;"></i>
                                     </a>
-                                  </div>
-                                  <div class="col-3 pt-3 pb-3">
+                                </div>
+                                <div class="col-3 pt-3 pb-3">
                                     <a href="{% url 'BINA_Q_notes:note_response_create' note.id %}">
-                                      <i class="fas fa-reply" style="font-size: 24px; color: #FF6D4C;"></i>
+                                        <i class="fas fa-reply" style="font-size: 24px; color: #FF6D4C;"></i>
                                     </a>
-                                  </div>
-                                  <div class="col-3 pt-3 pb-3">
+                                </div>
+                                <div class="col-3 pt-3 pb-3">
                                     <a href="{% url 'BINA_Q_notes:note_detail' note.id %}">
-                                      <i class="fas fa-eye" style="font-size: 24px; color: #FF6D4C;"></i>
+                                        <i class="fas fa-eye" style="font-size: 24px; color: #FF6D4C;"></i>
                                     </a>
-                                  </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                {% empty %}
+                <a class="btn btn-sm btn-primary" href="{% url 'BINA_Q_notes:note_create' %}">Creat Note</a>
                 {% endfor %}
             </div>
         </div>

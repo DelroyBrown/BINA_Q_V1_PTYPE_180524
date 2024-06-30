@@ -1,7 +1,8 @@
 # BINA_Q_notes/forms.py
 from django import forms
 from .models import Note, NoteResponse
-
+from BINA_Q_healthcare_workers.models import HealthcareWorker
+from BINA_Q_users.models import User
 
 class NoteForm(forms.ModelForm):
     class Meta:
@@ -17,6 +18,17 @@ class NoteForm(forms.ModelForm):
             "reminder": forms.DateTimeInput(attrs={"type": "datetime-local"}),
             "tags": forms.SelectMultiple(attrs={"class": "form-control"}),
         }
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop("user", None)
+        super(NoteForm, self).__init__(*args, **kwargs)
+        if user:
+            # Get the organisation_affiliation of the current user
+            healthcare_worker = HealthcareWorker.objects.get(user=user)
+            # Filter the tags queryset based on the organisation_affiliation
+            self.fields["tags"].queryset = User.objects.filter(
+                healthcareworker__organisation_affiliation=healthcare_worker.organisation_affiliation
+            )
 
 
 class NoteResponseForm(forms.ModelForm):
