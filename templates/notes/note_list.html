@@ -31,11 +31,17 @@
                                 {% for response in responses %}
                                 <li>
                                     <p>
-                                        <strong>{{ response.author.get_full_name }}:</strong><br>
+
+                                        <span>
+                                            <strong>
+                                                {{ response.author.get_full_name }}:
+                                            </strong>
+                                                {{ response.created_at }}
+                                        </span><br>
                                         {{ response.response }}
                                     </p>
                                     <p>
-                                        <small>{{ response.created_at }}</small>
+                                        <small></small>
                                     </p>
                                 </li>
                                 <hr>
