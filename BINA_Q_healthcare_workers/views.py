@@ -24,7 +24,27 @@ def register(request):
         if form.is_valid():
             identifier = form.cleaned_data["identifier"]
             email = form.cleaned_data["email"]
-            # Then i've stored the identifier and email in the session for later use
+
+            if User.objects.filter(email=email).exists():
+                return render(
+                    request,
+                    "registration/register.html",
+                    {
+                        "form": form,
+                        "error_message": "A user with this email already exists.",
+                    },
+                )
+
+            if HealthcareWorker.objects.filter(identifier=identifier).exists():
+                return render(
+                    request,
+                    "registration/register.html",
+                    {
+                        "form": form,
+                        "error_message": "A healthcare worker with this identifier already exists.",
+                    },
+                )
+
             request.session["identifier"] = identifier
             request.session["email"] = email
             return redirect(reverse("BINA_Q_healthcare_workers:retrieve_data"))

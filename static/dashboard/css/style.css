@@ -26729,6 +26729,17 @@ pre code.hljs {
         margin-right: auto;
         margin-bottom: 20px;
     }
+
+    .staff-3-info, .staff {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .notes-box {
+        margin-top: 50px;
+    }
+
 }
 
 .profile-info {
