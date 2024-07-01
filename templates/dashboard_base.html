@@ -16,6 +16,17 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
+    <style>
+        .notification-popup {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: white;
+            padding: 15px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 <body class="">
 
     {% block content %}
@@ -92,7 +103,46 @@
                 }
             });
         });
+
+
+        // NOTIFICATIONS
+
+        function fetchNotifications() {
+            console.log("Fetching notifications..."); // Add this line
+            fetch("{% url 'BINA_Q_notes:fetch_notifications' %}")
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Notifications received:", data); // Add this line
+                    data.forEach(notification => {
+                        showNotificationPopup(notification);
+                    });
+                })
+                .catch(error => console.error('Error fetching notifications:', error)); // Add error logging
+        }
+
+        function showNotificationPopup(notification) {
+            console.log("Showing notification popup:", notification); // Add this line
+            const popup = document.createElement('div');
+            popup.className = 'notification-popup';
+            popup.innerHTML = `
+            <p>${notification.message}</p>
+            <button onclick="viewNote(${notification.note_id})">View</button>
+            <button onclick="dismissPopup(this)">Dismiss</button>
+        `;
+            document.body.appendChild(popup);
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log("Document loaded, starting notification fetch interval..."); // Add this line
+            fetchNotifications(); // Fetch immediately when the page loads
+            setInterval(fetchNotifications, 2000); // Check for notifications every minute
+        });
+
     </script>
+
+
+
+
 </body>
 
 </html>

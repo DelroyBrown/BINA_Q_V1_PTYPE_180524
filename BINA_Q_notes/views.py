@@ -1,7 +1,8 @@
 # BINA_Q_notes/views.py
+from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Note
+from .models import Note, Notification
 from BINA_Q_users.models import User
 from .forms import NoteForm, NoteResponseForm
 
@@ -110,6 +111,15 @@ def note_create_with_tag(request, user_id):
             note.save()
             note.tags.add(tagged_user)
             form.save_m2m()
+
+            message = f"You have been tagged in the note '{note.title}'"
+            notification = Notification.objects.create(
+                user=tagged_user, note=note, message=message
+            )
+            print(
+                f"Notification created: {notification}"
+            )
+
             return redirect("BINA_Q_notes:note_list")
     else:
         form = NoteForm(user=request.user)
@@ -122,3 +132,13 @@ def note_create_with_tag(request, user_id):
 def tagged_notes(request):
     tagged_notes = Note.objects.filter(tags=request.user).order_by("-created_at")
     return render(request, "notes/tagged_notes.html", {"tagged_notes": tagged_notes})
+
+
+def fetch_notifications(request):
+    notifications = Notification.objects.filter(
+        user=request.user, is_read=False
+    ).order_by("-created_at")
+    data = [
+        {"id": n.id, "message": n.message, "note_id": n.note.id} for n in notifications
+    ]
+    return JsonResponse(data, safe=False)

@@ -29,10 +29,25 @@ class Note(models.Model):
 
 
 class NoteResponse(models.Model):
-    note = models.ForeignKey(Note, on_delete=models.CASCADE, related_name="note_responses")
+    note = models.ForeignKey(
+        Note, on_delete=models.CASCADE, related_name="note_responses"
+    )
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     response = models.TextField(max_length=2000)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"Response to {self.note.title} by {self.author.get_username()}"
+
+
+class Notification(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, related_name="notifications", on_delete=models.CASCADE
+    )
+    note = models.ForeignKey(Note, on_delete=models.CASCADE)
+    message = models.CharField(max_length=255)
+    is_read = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Notification for {self.user.get_full_name()} about {self.note.title}"

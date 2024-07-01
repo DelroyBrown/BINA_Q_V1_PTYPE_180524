@@ -11,6 +11,7 @@ from .views import (
     note_response_create,
     note_create_with_tag,
     tagged_notes,
+    fetch_notifications,
 )
 
 app_name = "BINA_Q_notes"
@@ -24,4 +25,5 @@ urlpatterns = [
     path("<int:note_id>/delete/", note_delete, name="note_delete"),
     path("new/<int:user_id>/", note_create_with_tag, name="note_create_with_tag"),
     path("tagged/", tagged_notes, name="tagged_notes"),
+    path("notifications/", fetch_notifications, name="fetch_notifications"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
