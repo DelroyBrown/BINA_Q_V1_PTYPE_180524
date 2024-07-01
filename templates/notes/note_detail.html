@@ -15,6 +15,15 @@
     {% include 'dashboard/dashboard_includes/dashboard__sidebar.html' %}
     <div class="content-body">
         <div class="container-fluid">
+            <div class="d-md-flex align-items-center mb-3">
+                <div class="page-titles mb-2">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'BINA_Q_notes:note_list' %}">All Notes</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ note.title }}</a></li>
+                    </ol>
+                </div>
+               
+            </div>
             <div class="row">
                 <div class="col-xl-12">
                     <div class="card">

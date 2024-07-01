@@ -15,11 +15,13 @@
     <!-- SIDEBAR -->
     {% include 'dashboard/dashboard_includes/dashboard__sidebar.html' %}
     <div class="content-body">
+       
         <div class="container-fluid">
+  
             <div class="row">
                 {% for note, responses in notes_with_responses %}
                 <div class="col-xl-4 col-lg-12 col-sm-12">
-                    <div class="card">
+                    <div class="card {% if request.user in note.tags.all %}tagged-note{% endif %}">
                         <div class="card-header border-0 pb-0">
                             <h2 class="card-title">{{ note.title }}</h2>
                             <small>{{ note.created_at|date:"D, d M Y H:i" }}</small>
@@ -31,7 +33,6 @@
                                 {% for response in responses %}
                                 <li>
                                     <p>
-
                                         <span>
                                             <strong>
                                                 {{ response.author.get_full_name }}:
@@ -48,7 +49,6 @@
                                 {% empty %}
                                 <li>No comments yet!</li>
                                 {% endfor %}
-
                                 <li class="list-group-item d-flex px-0 justify-content-between">
                                     <strong>Tagged</strong>
                                     {% for user in note.tags.all %}
@@ -61,19 +61,20 @@
                         </div>
                         <div class="card-footer pt-0 pb-0 text-center">
                             <div class="row">
+                                {% if request.user == note.author %}
                                 <div class="col-3 pt-3 pb-3 border-end">
                                     <a href="{% url 'BINA_Q_notes:note_edit' note.id %}">
                                         <i class="fas fa-edit" style="font-size: 24px; color: #FF6D4C;"></i>
                                     </a>
                                 </div>
-
                                 <div class="col-3 pt-3 pb-3">
                                     <a href="{% url 'BINA_Q_notes:note_delete' note.id %}">
                                         <i class="fas fa-trash-alt" style="font-size: 24px; color: #FF6D4C;"></i>
                                     </a>
                                 </div>
+                                {% endif %}
                                 <div class="col-3 pt-3 pb-3">
-                                    <a href="{% url 'BINA_Q_notes:note_response_create' note.id %}">
+                                    <a href="{% url 'BINA_Q_notes:note_detail' note.id %}">
                                         <i class="fas fa-reply" style="font-size: 24px; color: #FF6D4C;"></i>
                                     </a>
                                 </div>
@@ -87,7 +88,7 @@
                     </div>
                 </div>
                 {% empty %}
-                <a class="btn btn-sm btn-primary" href="{% url 'BINA_Q_notes:note_create' %}">Creat Note</a>
+                <a class="btn btn-sm btn-primary" href="{% url 'BINA_Q_notes:note_create' %}">Create Note</a>
                 {% endfor %}
             </div>
         </div>
