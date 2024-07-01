@@ -116,3 +116,9 @@ def note_create_with_tag(request, user_id):
         form.fields["tags"].initial = [tagged_user]
 
     return render(request, "notes/note_form.html", {"form": form})
+
+
+@login_required
+def tagged_notes(request):
+    tagged_notes = Note.objects.filter(tags=request.user).order_by("-created_at")
+    return render(request, "notes/tagged_notes.html", {"tagged_notes": tagged_notes})

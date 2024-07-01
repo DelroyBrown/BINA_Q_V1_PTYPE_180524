@@ -1,6 +1,4 @@
-<!--**********************************
-            Sidebar start
-        ***********************************-->
+<!-- templates/dashboard/dashboard_includes/dashboard__sidebar.html -->
 <div class="deznav">
     <div class="deznav-scroll">
         <ul class="metismenu" id="menu">
@@ -44,7 +42,7 @@
                         <a href="{% url 'BINA_Q_notes:note_list' %}">All Notes</a>
                     </li>
                     <li>
-                        <a href="javascript:void()">Tagged Notes</a>
+                        <a href="{% url 'BINA_Q_notes:tagged_notes' %}">Tagged Notes</a>
                     </li>
                 </ul>
             </li>
