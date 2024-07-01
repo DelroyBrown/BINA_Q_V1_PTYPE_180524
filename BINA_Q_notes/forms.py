@@ -23,9 +23,7 @@ class NoteForm(forms.ModelForm):
         user = kwargs.pop("user", None)
         super(NoteForm, self).__init__(*args, **kwargs)
         if user:
-            # Get the organisation_affiliation of the current user
             healthcare_worker = HealthcareWorker.objects.get(user=user)
-            # Filter the tags queryset based on the organisation_affiliation
             self.fields["tags"].queryset = User.objects.filter(
                 healthcareworker__organisation_affiliation=healthcare_worker.organisation_affiliation
             )

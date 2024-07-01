@@ -9,6 +9,7 @@ from .views import (
     note_create,
     note_edit,
     note_response_create,
+    note_create_with_tag,
 )
 
 app_name = "BINA_Q_notes"
@@ -17,7 +18,12 @@ urlpatterns = [
     path("", note_list, name="note_list"),
     path("<int:note_id>/", note_detail, name="note_detail"),
     path("new/", note_create, name="note_create"),
-    path('notes/<int:note_id>/response/', note_response_create, name='note_response_create'),
+    path(
+        "notes/<int:note_id>/response/",
+        note_response_create,
+        name="note_response_create",
+    ),
     path("notes/<int:note_id>/edit/", note_edit, name="note_edit"),
     path("notes/<int:note_id>/delete/", note_delete, name="note_delete"),
+    path("new/<int:user_id>/", note_create_with_tag, name="note_create_with_tag"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

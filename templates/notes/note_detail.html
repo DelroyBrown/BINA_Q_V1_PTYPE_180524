@@ -38,8 +38,6 @@
                             </div>
                             <hr>
                             <div>
-                                <h2 class="mb-5">Responses</h2>
-                                
                                 {% for response in responses %}
                                 <div>
                                     <strong>{{ response.author.get_full_name }}</strong>
@@ -47,12 +45,13 @@
                                 </div>
                                 {% endfor %}
                             </div>
+                            <hr>
                             <div>
-                                <h4>Add a Response</h4>
+                                <h4>Respond</h4>
                                 <form method="post">
                                     {% csrf_token %}
-                                    {{ form.as_p }}
-                                    <button type="submit">Submit</button>
+                                    <textarea class="form-control" name="response" cols="40" rows="10" maxlength="2000" required="" id="id_response"></textarea>
+                                    <button class="btn btn-sm mt-2 btn-primary" type="submit">Submit</button>
                                 </form>
                             </div>
                         </div>

@@ -2,6 +2,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Note
+from BINA_Q_users.models import User
 from .forms import NoteForm, NoteResponseForm
 
 
@@ -99,3 +100,22 @@ def note_response_create(request, note_id):
     else:
         form = NoteResponseForm()
     return render(request, "notes/note_comment_form.html", {"form": form, "note": note})
+
+
+@login_required
+def note_create_with_tag(request, user_id):
+    tagged_user = get_object_or_404(User, id=user_id)
+    if request.method == "POST":
+        form = NoteForm(request.POST, user=request.user)
+        if form.is_valid():
+            note = form.save(commit=False)
+            note.author = request.user
+            note.save()
+            note.tags.add(tagged_user)
+            form.save_m2m()
+            return redirect("BINA_Q_notes:note_list")
+    else:
+        form = NoteForm(user=request.user)
+        form.fields["tags"].initial = [tagged_user]
+
+    return render(request, "notes/note_form.html", {"form": form})
