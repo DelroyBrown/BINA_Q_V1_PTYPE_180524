@@ -15,9 +15,7 @@
     <!-- SIDEBAR -->
     {% include 'dashboard/dashboard_includes/dashboard__sidebar.html' %}
     <div class="content-body">
-       
         <div class="container-fluid">
-  
             <div class="row">
                 {% for note, responses in notes_with_responses %}
                 <div class="col-xl-4 col-lg-12 col-sm-12">
@@ -29,26 +27,9 @@
                         <div class="card-body pb-0">
                             <p>{{ note.content }}</p>
                             <hr>
+                            <p><strong>Responses:</strong> {{ responses|length }}</p>
+                            <hr>
                             <ul style="padding-left: 15px;" class="list-group list-group-flush">
-                                {% for response in responses %}
-                                <li>
-                                    <p>
-                                        <span>
-                                            <strong>
-                                                {{ response.author.get_full_name }}:
-                                            </strong>
-                                                {{ response.created_at }}
-                                        </span><br>
-                                        {{ response.response }}
-                                    </p>
-                                    <p>
-                                        <small></small>
-                                    </p>
-                                </li>
-                                <hr>
-                                {% empty %}
-                                <li>No comments yet!</li>
-                                {% endfor %}
                                 <li class="list-group-item d-flex px-0 justify-content-between">
                                     <strong>Tagged</strong>
                                     {% for user in note.tags.all %}
@@ -74,7 +55,7 @@
                                 </div>
                                 {% endif %}
                                 <div class="col-3 pt-3 pb-3">
-                                    <a href="{% url 'BINA_Q_notes:note_detail' note.id %}">
+                                    <a href="{% url 'BINA_Q_notes:note_response_create' note.id %}">
                                         <i class="fas fa-reply" style="font-size: 24px; color: #FF6D4C;"></i>
                                     </a>
                                 </div>

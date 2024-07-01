@@ -1,11 +1,10 @@
+<!-- templates/dashboard/dashboard_includes/messages.html -->
 {% load static %}
 <div class="col-xl-6 col-xxl-6 col-lg-6 notes-box">
-
     <div class="card border-0 p-0">
         <div class="card-header border-0">
             <h4 class="card-title">Notes
-                <a class="mx-1 btn btn-outline-primary btn-xxs"
-                href="{% url 'BINA_Q_notes:note_create' %}">
+                <a class="mx-1 btn btn-outline-primary btn-xxs" href="{% url 'BINA_Q_notes:note_create' %}">
                     Add Note
                 </a>
             </h4>
@@ -23,12 +22,19 @@
                             <div class="media-body">
                                 <h5 class="mb-1">{{ note.title }}</h5>
                                 <p class="mb-1">{{ note.content }}</p>
-                                <a href="{% url 'BINA_Q_notes:note_edit' note.id %}"
-                                    class="btn btn-xxs btn-warning">Edit</a>
-                                <a href="{% url 'BINA_Q_notes:note_delete' note.id %}"
-                                    class="btn btn-xxs btn-danger">Delete</a>
+                                {% if request.user == note.author %}
+                                <a href="{% url 'BINA_Q_notes:note_edit' note.id %}" class="btn btn-xxs btn-warning">Edit</a>
+                                <a href="{% url 'BINA_Q_notes:note_delete' note.id %}" class="btn btn-xxs btn-danger">Delete</a>
+                                {% else %}
+                                <a href="{% url 'BINA_Q_notes:note_detail' note.id %}" class="btn btn-xxs">
+                                    <i
+                                    class="fas fa-reply"
+                                    style="font-size: 24px; color: #FD6262;">
+                                </i>
+                                    
+                                </a>
+                                {% endif %}
                             </div>
-
                         </div>
                     </li>
                     {% endfor %}
@@ -39,24 +45,16 @@
                                 <img width="30px" src="{% static 'images/bina_logo.png' %}">
                             </div>
                             <div class="media-body">
-                                <h5 class="mb-1">
-                                    {{ note.title }}
-                                    <small class="text-muted">
-                                        {{ note.created_at|date:"D,d M Y H:i" }}
-                                    </small>
+                                <h5 class="mb-1">{{ note.title }}
+                                    <small class="text-muted">{{ note.created_at|date:"D,d M Y H:i" }}</small>
                                 </h5>
                                 <p class="mb-1">{{ note.content }}</p>
-                                <a href="{% url 'BINA_Q_notes:note_edit' note.id %}"
-                                    class="btn btn-xxs btn-warning">Edit</a>
-                                <a href="{% url 'BINA_Q_notes:note_delete' note.id %}"
-                                    class="btn btn-xxs btn-danger">Delete</a>
+                                <a href="{% url 'BINA_Q_notes:note_edit' note.id %}" class="btn btn-xxs btn-warning">Edit</a>
+                                <a href="{% url 'BINA_Q_notes:note_delete' note.id %}" class="btn btn-xxs btn-danger">Delete</a>
                             </div>
-
                         </div>
                     </li>
-               
                     {% endfor %}
-
                 </ul>
             </div>
         </div>

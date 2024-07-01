@@ -13,10 +13,7 @@ def note_list(request):
     )
     notes = notes.distinct().order_by("-created_at")
 
-    notes_with_responses = []
-    for note in notes:
-        responses = note.note_responses.all()
-        notes_with_responses.append((note, responses))
+    notes_with_responses = [(note, note.note_responses.all()) for note in notes]
 
     return render(
         request, "notes/note_list.html", {"notes_with_responses": notes_with_responses}
