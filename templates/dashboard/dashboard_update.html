@@ -1,0 +1,48 @@
+{% extends 'dashboard_base.html' %}
+
+{% block content %}
+<h1>Update Profile</h1>
+<form method="post" id="profile-form">
+    {% csrf_token %}
+    {{ profile_form.as_p }}
+    {{ ods_form.as_p }}
+    <button type="submit">Save changes</button>
+</form>
+
+<h2>Organisation Details</h2>
+<div id="organisation-details">
+    <!-- Organisation details will be populated here by AJAX -->
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#id_ods_code').on('input', function() {
+        var ods_code = $(this).val();
+        if (ods_code) {
+            $.ajax({
+                url: '{% url "BINA_Q_users:fetch_ods_details" %}',
+                data: {'ods_code': ods_code},
+                dataType: 'json',
+                success: function(data) {
+                    if (data.organisation_details) {
+                        var details = data.organisation_details;
+                        $('#organisation-details').html(
+                            '<ul>' +
+                            '<li>Organisation Name: ' + details.organisation_name + '</li>' +
+                            '<li>Address: ' + details.address + '</li>' +
+                            '<li>Contact Number: ' + details.contact_number + '</li>' +
+                            '</ul>'
+                        );
+                    } else {
+                        $('#organisation-details').html('<p>' + data.error + '</p>');
+                    }
+                }
+            });
+        } else {
+            $('#organisation-details').html('');
+        }
+    });
+});
+</script>
+{% endblock %}

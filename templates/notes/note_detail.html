@@ -1,0 +1,73 @@
+<!-- templates/notes/note_detail.html -->
+{% extends 'dashboard_base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'dashboard/dashboard_includes/css_links.html' %}
+{% include 'dashboard/dashboard_includes/javascript_links.html' %}
+<div id="main-wrapper">
+    <!-- NAV HEADER -->
+    {% include 'dashboard/dashboard_includes/dashboard__nav-header.html' %}
+    <!-- CHAT BOX -->
+    {% include 'dashboard/dashboard_includes/dashboard__chat-box.html' %}
+    <!-- MAIN HEADER -->
+    {% include 'dashboard/dashboard_includes/dashboard__header.html' %}
+    <!-- SIDEBAR -->
+    {% include 'dashboard/dashboard_includes/dashboard__sidebar.html' %}
+    <div class="content-body">
+        <div class="container-fluid">
+            <div class="d-md-flex align-items-center mb-3">
+                <div class="page-titles mb-2">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'BINA_Q_notes:note_list' %}">All Notes</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ note.title }}</a></li>
+                    </ol>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="post-details">
+                                <h3 class="mb-2 text-black">{{ note.title }}</h3>
+                                <ul class="mb-4 post-meta d-flex flex-wrap">
+                                    <li class="post-author me-3">By {{ note.author.get_full_name }}</li>
+                                    <li class="post-date me-3"><i class="fa-solid fa-calendar me-2"></i>{{ note.created_at }}</li>
+                                    <li class="post-comment"><i class="fas fa-comments"></i> {{ responses.count }}</li>
+                                </ul>
+                                <p>{{ note.content }}</p>
+                                {% if note.author == user %}
+                                <a href="{% url 'BINA_Q_notes:note_edit' note.id %}">
+                                    <i class="fas fa-edit" style="font-size: 24px; color: #FF6D4C; margin-right: 10px;"></i>
+                                </a>
+                                <a href="{% url 'BINA_Q_notes:note_delete' note.id %}">
+                                    <i class="fas fa-trash-alt" style="font-size: 24px; color: #FF6D4C;"></i>
+                                </a>
+                                {% endif %}
+                            </div>
+                            <hr>
+                            <div>
+                                {% for response in responses %}
+                                <div>
+                                    <strong>{{ response.author.get_full_name }}</strong>
+                                    <p>{{ response.response }}</p>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <hr>
+                            <div>
+                                <h4>Respond</h4>
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <textarea class="form-control" name="response" cols="40" rows="10" maxlength="2000" required="" id="id_response"></textarea>
+                                    <button class="btn btn-sm mt-2 btn-primary" type="submit">Respond</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

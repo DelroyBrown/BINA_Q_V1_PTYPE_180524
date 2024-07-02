@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="authincation h-100">
+    <div class="container h-100">
+        <div class="row justify-content-center h-100 align-items-center">
+            <div class="col-md-6">
+                <div class="authincation-content">
+                    <div class="row no-gutters">
+                        <div class="col-xl-12">
+                            <div class="auth-form">
+                                <div class="text-center mb-3">
+                                    <a href="index.html">
+                                        <img style="height: 80px;" src="{% static 'images/bina_logo.png' %}" alt="">
+                                    </a>
+                                </div>
+                                <h4 class="text-center mb-4">Enter the healthcare workers PRN code</h4>
+                                {% if error_message %}
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ error_message }}
+                                    </div>
+                                {% endif %}
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label class="form-label">GMC/NMC/HCPC Number</label>
+                                        <input type="text" class="form-control" name="identifier"
+                                            maxlength="50" required=""
+                                            id="id_identifier">
+                                    </div>
+                                    <label class="form-label">Healthcare Workers Email</label>
+                                    <div class="mb-3 position-relative">
+                                        <input class="form-control" type="email" name="email"
+                                            maxlength="255" required=""
+                                            id="id_email">
+                                        <span class="show-pass eye">
+                                            <i class="fa fa-eye-slash"></i>
+                                            <i class="fa fa-eye"></i>
+                                        </span>
+                                    </div>
+                                    <div class="form-row d-flex justify-content-between flex-wrap mt-4 mb-2">
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary btn-block">Register User</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

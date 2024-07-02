@@ -1,0 +1,41 @@
+<html lang="en">
+    {% load static %}
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>BINA-Q</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'home/home.css' %}">
+  <!--
+  ----------------------------- Full Screen Video Background - HTML & CSS ----------------------------
+  source: https://www.youtube.com/watch?v=Gx_7GQtSdpc&feature=push-u-sub&attr_tag=xv2nTNGfBLNx6H3l%3A6
+fecha: 26-04-20
+done!
+-->
+</head>
+
+<body>
+  <section class="showcase">
+    <div class="video-container">
+      <img src="{% static 'images/homepage_bg.webp' %}">
+    </div>
+
+    </div>
+    <div class="content">
+        <img width="75px" src="{% static 'images/bina_logo.svg' %}">
+      <h1>BINA-Q</h1>
+      <h3>
+        Access Crucial Insights with BINA Q:<br>
+        Rapidly Generate Essential Data in Minutes
+    </h3>
+      <a href="{% url 'BINA_Q_users:login' %}" class="btn">Login</a>
+      <a href="{% url 'BINA_Q_healthcare_workers:register' %}" class="btn">Register</a>
+
+    </div>
+  </section>
+
+  
+</body>
+
+</html>

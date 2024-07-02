@@ -1,0 +1,10 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h1>Access Denied</h1>
+    <p>You do not have permission to view this note.</p>
+    <a href="{% url 'BINA_Q_notes:note_list' %}" class="btn btn-primary">Back to Notes</a>
+</div>
+{% endblock %}

@@ -1,0 +1,202 @@
+{
+    "healthcare_workers": [
+        {
+            "identifier": "GMC123456",
+            "first_name": "John",
+            "last_name": "Smith",
+            "license_number": "L12345",
+            "specialization": "Cardiology",
+            "organisation_affiliation": "General Hospital",
+            "ods_code": "ODS001"
+        },
+        {
+            "identifier": "NMC654321",
+            "first_name": "Emily",
+            "last_name": "Johnson",
+            "license_number": "L23456",
+            "specialization": "Neurology",
+            "organisation_affiliation": "City Clinic",
+            "ods_code": "ODS002"
+        },
+        {
+            "identifier": "HCPC789012",
+            "first_name": "Michael",
+            "last_name": "Brown",
+            "license_number": "L34567",
+            "specialization": "Pediatrics",
+            "organisation_affiliation": "Children's Hospital",
+            "ods_code": "ODS003"
+        },
+        {
+            "identifier": "GMC345678",
+            "first_name": "Sarah",
+            "last_name": "Davis",
+            "license_number": "L45678",
+            "specialization": "Dermatology",
+            "organisation_affiliation": "Skin Care Center",
+            "ods_code": "ODS004"
+        },
+        {
+            "identifier": "HCPC890123",
+            "first_name": "David",
+            "last_name": "Wilson",
+            "license_number": "L56789",
+            "specialization": "Orthopedics",
+            "organisation_affiliation": "Orthopedic Hospital",
+            "ods_code": "ODS005"
+        },
+        {
+            "identifier": "HCPC895555",
+            "first_name": "David",
+            "last_name": "Wilson",
+            "license_number": "L56789",
+            "specialization": "Orthopedics",
+            "organisation_affiliation": "Orthopedic Hospital",
+            "ods_code": "ODS005"
+        },
+        {
+            "identifier": "GMC456789",
+            "first_name": "Jessica",
+            "last_name": "Thompson",
+            "license_number": "L67890",
+            "specialization": "Oncology",
+            "organisation_affiliation": "Cancer Treatment Center",
+            "ods_code": "ODS006"
+        },
+        {
+            "identifier": "NMC567890",
+            "first_name": "Daniel",
+            "last_name": "Anderson",
+            "license_number": "L78901",
+            "specialization": "Psychiatry",
+            "organisation_affiliation": "Mental Health Clinic",
+            "ods_code": "ODS007"
+        },
+        {
+            "identifier": "HCPC890124",
+            "first_name": "Sophia",
+            "last_name": "Martinez",
+            "license_number": "L89012",
+            "specialization": "Physical Therapy",
+            "organisation_affiliation": "Rehabilitation Center",
+            "ods_code": "ODS008"
+        },
+        {
+            "identifier": "GMC567891",
+            "first_name": "William",
+            "last_name": "Taylor",
+            "license_number": "L90123",
+            "specialization": "Gastroenterology",
+            "organisation_affiliation": "Digestive Health Center",
+            "ods_code": "ODS009"
+        },
+        {
+            "identifier": "NMC678901",
+            "first_name": "Olivia",
+            "last_name": "Clark",
+            "license_number": "L01234",
+            "specialization": "Obstetrics and Gynecology",
+            "organisation_affiliation": "Women's Health Clinic",
+            "ods_code": "ODS010"
+        },
+        {
+            "identifier": "HCPC890125",
+            "first_name": "Jacob",
+            "last_name": "Lewis",
+            "license_number": "L12345",
+            "specialization": "Speech Therapy",
+            "organisation_affiliation": "Communication Disorders Center",
+            "ods_code": "ODS011"
+        },
+        {
+            "identifier": "GMC678912",
+            "first_name": "Mia",
+            "last_name": "Walker",
+            "license_number": "L23456",
+            "specialization": "Endocrinology",
+            "organisation_affiliation": "Hormone Health Clinic",
+            "ods_code": "ODS012"
+        },
+        {
+            "identifier": "NMC789012",
+            "first_name": "Ethan",
+            "last_name": "Hall",
+            "license_number": "L34567",
+            "specialization": "Nephrology",
+            "organisation_affiliation": "Kidney Care Center",
+            "ods_code": "ODS013"
+        },
+        {
+            "identifier": "HCPC890126",
+            "first_name": "Isabella",
+            "last_name": "Young",
+            "license_number": "L45678",
+            "specialization": "Occupational Therapy",
+            "organisation_affiliation": "Rehabilitation Services",
+            "ods_code": "ODS014"
+        },
+        {
+            "identifier": "GMC789123",
+            "first_name": "Michael",
+            "last_name": "Allen",
+            "license_number": "L56789",
+            "specialization": "Pulmonology",
+            "organisation_affiliation": "Respiratory Care Clinic",
+            "ods_code": "ODS015"
+        },
+        {
+            "identifier": "NMC890123",
+            "first_name": "Sophia",
+            "last_name": "Wright",
+            "license_number": "L67890",
+            "specialization": "Geriatrics",
+            "organisation_affiliation": "Senior Care Center",
+            "ods_code": "ODS016"
+        },
+        {
+            "identifier": "HCPC901234",
+            "first_name": "Benjamin",
+            "last_name": "Scott",
+            "license_number": "L78901",
+            "specialization": "Audiology",
+            "organisation_affiliation": "Hearing Health Clinic",
+            "ods_code": "ODS017"
+        },
+        {
+            "identifier": "GMC890145",
+            "first_name": "Emma",
+            "last_name": "Green",
+            "license_number": "L89012",
+            "specialization": "Rheumatology",
+            "organisation_affiliation": "Joint and Bone Clinic",
+            "ods_code": "ODS018"
+        },
+        {
+            "identifier": "NMC901256",
+            "first_name": "Henry",
+            "last_name": "Baker",
+            "license_number": "L90123",
+            "specialization": "Radiology",
+            "organisation_affiliation": "Imaging Center",
+            "ods_code": "ODS019"
+        },
+        {
+            "identifier": "HCPC901267",
+            "first_name": "Avery",
+            "last_name": "Roberts",
+            "license_number": "L01234",
+            "specialization": "Dietetics",
+            "organisation_affiliation": "Nutrition Clinic",
+            "ods_code": "ODS020"
+        },
+        {
+            "identifier": "GMC901278",
+            "first_name": "Liam",
+            "last_name": "Turner",
+            "license_number": "L12345",
+            "specialization": "Infectious Diseases",
+            "organisation_affiliation": "Infectious Disease Center",
+            "ods_code": "ODS021"
+        }
+    ]
+}

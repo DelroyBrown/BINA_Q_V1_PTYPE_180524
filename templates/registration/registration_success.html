@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="authincation h-100">
+    <div class="container h-100">
+        <div class="row justify-content-center h-100 align-items-center">
+            <div class="col-md-6">
+                <div class="form-input-content text-center error-page">
+                    <h4>
+                        <i class="fa-solid fa-circle-check" style="color: #FD6262;"></i> 
+                        Registration Successfull!
+                    </h4>
+                    <p>Your registration was successful. Please check your email for your BINA-Q ID and temporary password.</p>
+                    <div>
+                        <a class="btn btn-primary" href="{% url 'BINA_Q_users:login' %}">Log In</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>{% endblock %}

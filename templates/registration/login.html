@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="authincation h-100">
+    <div class="container h-100">
+        <div class="row justify-content-center h-100 align-items-center">
+            <div class="col-md-6">
+                <div class="authincation-content">
+                    <div class="row no-gutters">
+                        <div class="col-xl-12">
+                            <div class="auth-form">
+                                <div class="text-center mb-3">
+                                    <a href="index.html">
+                                        <img style="height: 80px;" src="{% static 'images/bina_logo.png' %}" alt="">
+                                    
+                                    </a>                                </div>
+                                <h4 class="text-center mb-4">Sign in to your account</h4>
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label class="form-label" for="id_bina_q_id">BINA-Q-ID:</label>
+                                        <input class="form-control" type="text" name="bina_q_id" maxlength="50"
+                                            required="" id="id_bina_q_id">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="id_password">Password:</label>
+                                        <input class="form-control" type="password" name="password" required="" id="id_password">
+                                    </div>
+
+                                    <div class="form-row d-flex justify-content-between flex-wrap mt-4 mb-2">
+                                        <div class="form-group">
+                                            <div class="form-check custom-checkbox ms-1">
+                                                <input type="checkbox" class="form-check-input" id="basic_checkbox_1">
+                                                <label class="form-check-label" for="basic_checkbox_1">Remember my
+                                                    preference</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <a href="javascript:void(0)">Forgot Password?</a>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary btn-block">Sign Me In</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if form.errors %}
+<div>
+    <ul>
+        {% for field in form %}
+        {% for error in field.errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+{% endblock %}

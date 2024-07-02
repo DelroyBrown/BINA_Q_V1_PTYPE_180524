@@ -1,0 +1,1 @@
+web: gunicorn BINA_Q_base.wsgi:application

@@ -1,0 +1,148 @@
+<!-- templates/dashboard_base.html -->
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BINA-Q</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.css"
+        integrity="sha512-VcyUgkobcyhqQl74HS1TcTMnLEfdfX6BbjhH8ZBjFU9YTwHwtoRtWSGzhpDVEJqtMlvLM2z3JIixUOu63PNCYQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+    <style>
+        .notification-popup {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: white;
+            padding: 15px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+<body class="">
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this note?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Bootstrap JS and Popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+        integrity="sha512-Wnml6sDKSpHDk13BDY9EBXKdNHv26bfCTZnXyCVJTDdPfU/fmrjH0PcvcWb6NA6a3HTZnI2xHv2rZXM3Szy5aA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Add your custom JavaScript -->
+    <script>
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+            var deleteButtons = document.querySelectorAll('.delete-btn');
+            var confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+            var noteIdToDelete = null;
+
+            deleteButtons.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    noteIdToDelete = this.getAttribute('data-note-id');
+                    deleteModal.show();
+                });
+            });
+
+            confirmDeleteBtn.addEventListener('click', function () {
+                if (noteIdToDelete) {
+                    var form = document.createElement('form');
+                    form.method = 'post';
+                    form.action = `/notes/${noteIdToDelete}/delete/`;
+                    var csrfToken = getCookie('csrftoken');
+                    var csrfInput = document.createElement('input');
+                    csrfInput.type = 'hidden';
+                    csrfInput.name = 'csrfmiddlewaretoken';
+                    csrfInput.value = csrfToken;
+                    form.appendChild(csrfInput);
+                    document.body.appendChild(form);
+                    form.submit();
+                }
+            });
+        });
+
+
+        // NOTIFICATIONS
+
+        function fetchNotifications() {
+            console.log("Fetching notifications..."); // Add this line
+            fetch("{% url 'BINA_Q_notes:fetch_notifications' %}")
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Notifications received:", data); // Add this line
+                    data.forEach(notification => {
+                        showNotificationPopup(notification);
+                    });
+                })
+                .catch(error => console.error('Error fetching notifications:', error)); // Add error logging
+        }
+
+        function showNotificationPopup(notification) {
+            console.log("Showing notification popup:", notification); // Add this line
+            const popup = document.createElement('div');
+            popup.className = 'notification-popup';
+            popup.innerHTML = `
+            <p>${notification.message}</p>
+            <button onclick="viewNote(${notification.note_id})">View</button>
+            <button onclick="dismissPopup(this)">Dismiss</button>
+        `;
+            document.body.appendChild(popup);
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log("Document loaded, starting notification fetch interval..."); // Add this line
+            fetchNotifications(); // Fetch immediately when the page loads
+            setInterval(fetchNotifications, 2000); // Check for notifications every minute
+        });
+
+    </script>
+
+
+
+
+</body>
+
+</html>

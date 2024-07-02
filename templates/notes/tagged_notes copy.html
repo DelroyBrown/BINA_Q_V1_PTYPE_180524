@@ -1,0 +1,29 @@
+<!-- templates/notes/tagged_notes.html -->
+{% extends 'dashboard_base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h1>Notes You're Tagged In</h1>
+    <div class="row">
+        {% for note in tagged_notes %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title">{{ note.title }}</h5>
+                    <small>{{ note.created_at|date:"D, d M Y H:i" }}</small>
+                </div>
+                <div class="card-body">
+                    <p>{{ note.content }}</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'BINA_Q_notes:note_detail' note.id %}" class="btn btn-primary">View</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No notes found.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
